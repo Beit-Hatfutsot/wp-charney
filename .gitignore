@@ -1,0 +1,9 @@
+wp-config.php
+nginx.conf
+wp-content/themes/charney/.sass-cache/
+wp-content/themes/charney/node_modules/
+wp-content/themes/charney/css/admin/
+wp-content/themes/charney/css/*.css
+wp-content/themes/charney/css/*.map
+wp-content/themes/charney/js/min/
+wp-content/uploads/
