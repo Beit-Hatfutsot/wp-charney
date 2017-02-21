@@ -1,25 +1,57 @@
 <?php
 /**
- * The template for displaying the footer
+ * Theme footer
  *
- * Contains the closing of the #content div and all content after.
+ * Contains the theme wrapper end
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Leon_Charney_-_Digital_Archive
+ * @author		Beit Hatfutsot
+ * @package		charney
+ * @version		1.0.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
 
-	</div><!-- #content -->
+<?php
+	/**
+	 * charney_after_main_content hook
+	 *
+	 * @hooked	charney_theme_wrapper_end - 10 (outputs closing divs for the content)
+	 */
+	do_action('charney_after_main_content');
+?>
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'charney' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'charney' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'charney' ), 'charney', '<a href="https://automattic.com/" rel="designer">Beit Hatfutsot</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<script>
+
+	var js_globals = {};
+	js_globals.template_url	= "<?php echo TEMPLATE; ?>";
+
+</script>
+
+<?php
+
+	/**
+	 * Display footer
+	 */
+	get_template_part( 'views/footer/footer' );
+
+	/**
+	 * PhotoSwipe
+	 */
+	get_template_part( 'views/footer/footer-photoswipe' );
+
+	/**
+	 * Footer scripts
+	 */
+	wp_enqueue_script( 'bootstrap' );
+	wp_enqueue_script( 'jquery-ui' );
+	wp_enqueue_script( 'photoswipe' );
+	wp_enqueue_script( 'photoswipe-ui-default' );
+	wp_enqueue_script( 'general' );
+
+?>
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

@@ -1,0 +1,61 @@
+/*************/
+/* variables */
+/*************/
+
+$images:	"../images/";
+$fonts:		"../fonts/";
+
+$default_fonts:	'Assistant', sans-serif;
+
+/*******************/
+/* admin variables */
+/*******************/
+
+$admin-images:	"../../images/admin/";
+
+/**********/
+/* colors */
+/**********/
+
+$gray-color1:		#333;
+$gray-color2:		#444;
+$gray-color3:		#666;
+$gray-color4:		#999;
+$gray-color5:		#c2c2c2;
+$gray-color6:		#e6e6e6;
+$gray-color7:		#f4f4f4;
+
+$orange-color1:		#c96e00;
+$orange-color2:		#ea8a0a;
+$orange-color3:		#fbb034;
+$orange-color4:		#fbbf61;
+$orange-color5:		#fdd085;
+$orange-color6:		#fee2b6;
+$orange-color7:		#feeed3;
+$orange-color8:		#fff8f0;
+
+$black:				#000;
+
+$white:				#FFF;
+$white-opac:		rgba($white, 0.9);
+
+/**************/
+/* typography */
+/**************/
+
+$font-color:		$black;
+
+$link-color:		$black;
+$link-hover-color:	$black;
+
+$font-light:		300;
+$font-regular:		400;
+$font-semi-bold:	600;
+$font-bold:			700;
+
+/***********/
+/* borders */
+/***********/
+
+$orange-border:		$orange-color5;
+$gray-border:		$gray-color6;

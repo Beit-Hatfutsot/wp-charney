@@ -1,0 +1,25 @@
+{
+  "name": "charney",
+  "version": "1.0.0",
+  "description": "Leon Charney - Digital Archive",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beit-Hatfutsot/wp-charney.git"
+  },
+  "author": "Beit Hatfutsot",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Beit-Hatfutsot/wp-charney/issues"
+  },
+  "homepage": "https://github.com/Beit-Hatfutsot/wp-charney#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^2.1.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
