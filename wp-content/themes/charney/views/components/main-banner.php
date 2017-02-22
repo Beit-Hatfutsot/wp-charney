@@ -52,8 +52,11 @@ if ( function_exists('get_field') ) {
 					/**
 					 * Display BH logo
 					 */
-					get_template_part('views/svgs/shape', 'bh-logo');
-				?>
+					?>
+
+					<a href="//www.bh.org.il" target="_blank">
+						<?php get_template_part('views/svgs/shape', 'bh-logo'); ?>
+					</a>
 
 			</div>
 

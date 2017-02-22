@@ -38,7 +38,7 @@ else {
 			/**
 			 * Search form title
 			 */
-			echo ( $template == 'main' && $title ) ? '<h2 class="section-title">' . $title . '</h2>' : '';
+			echo $template == 'main' && $title ? '<h2 class="section-title">' . $title . '</h2>' : '';
 		?>
 
 		<?php
@@ -52,7 +52,7 @@ else {
 			/**
 			 * Search form comment
 			 */
-			echo ( $template == 'main' && $comment ) ? '<small>' . $comment . '</small>' : '';
+			echo $template == 'main' && $comment ? '<small>' . $comment . '</small>' : '';
 		?>
 
 	</div>

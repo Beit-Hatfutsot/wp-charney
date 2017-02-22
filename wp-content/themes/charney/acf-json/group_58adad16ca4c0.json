@@ -1,10 +1,10 @@
 {
-    "key": "group_58acb091900b3",
-    "title": "General Options",
+    "key": "group_58adad16ca4c0",
+    "title": "Main",
     "fields": [
         {
-            "key": "field_58acb0bbb6799",
-            "label": "Header",
+            "key": "field_58adad3794f4d",
+            "label": "Bio",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -15,32 +15,13 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "left",
+            "placement": "top",
             "endpoint": 1
         },
         {
-            "key": "field_58acb0d2b679a",
-            "label": "Introduction",
-            "name": "acf-general-options_introduction",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_58acb137b679b",
-            "label": "About Page Text",
-            "name": "acf-general-options_about_page_text",
+            "key": "field_58adad4c94f4e",
+            "label": "Bio Title",
+            "name": "acf-main_bio_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -57,10 +38,34 @@
             "maxlength": ""
         },
         {
-            "key": "field_58acb16eb679c",
-            "label": "About Page Link",
-            "name": "acf-general-options_about_page_link",
-            "type": "page_link",
+            "key": "field_58adadba94f4f",
+            "label": "Bio Image",
+            "name": "acf-main_bio_image",
+            "type": "image",
+            "instructions": "Image Dimensions (px): 450x450",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_58adae4194f50",
+            "label": "Bio Content",
+            "name": "acf-main_bio_content",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -69,31 +74,31 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "page_template",
                 "operator": "==",
-                "value": "acf-options-general"
+                "value": "page-templates\/main.php"
             }
         ]
     ],
-    "menu_order": 11,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content"
+    ],
     "active": 1,
     "description": "",
-    "modified": 1487783988
+    "modified": 1487783974
 }

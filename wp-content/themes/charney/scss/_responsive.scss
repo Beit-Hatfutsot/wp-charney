@@ -29,7 +29,17 @@
 	}
 }
 
-@media (max-width: 1199px) {}
+@media (max-width: 1199px) {
+
+	/******************/
+	/* general layout */
+	/******************/
+
+	body {
+		line-height: 22px;
+		font-size: 16px;
+	}
+}
 
 @media (max-width: 991px) {}
 
@@ -52,7 +62,41 @@
 	}
 }
 
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+
+	/****************/
+	/* page content */
+	/****************/
+
+	.page-content {
+
+		/***********/
+		/* content */
+		/***********/
+
+		.content-wrapper {
+			.content {
+				.content-section {
+
+					/*******/
+					/* bio */
+					/*******/
+
+					&.bio {
+						.bio-left,
+						.bio-right {
+							width: 100%;
+						}
+
+						.bio-left {
+							margin-bottom: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 @media (min-width: 1200px) {}
 	
@@ -78,22 +122,24 @@
 
 		.content-wrapper {
 			.content {
+				.content-section {
 
-				/***************/
-				/* main banner */
-				/***************/
+					/***************/
+					/* main banner */
+					/***************/
 
-				.main-banner {
-					.main-banner-left {
-						h1 {
-							font-size: 22px;
+					&.main-banner {
+						.main-banner-left {
+							h1 {
+								font-size: 22px;
+							}
 						}
-					}
 
-					.main-banner-right {
-						.about-page-wrapper {
-							.about-page {
-								font-size: 14px;
+						.main-banner-right {
+							.about-page-wrapper {
+								.about-page {
+									font-size: 14px;
+								}
 							}
 						}
 					}

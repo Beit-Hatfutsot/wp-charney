@@ -16,6 +16,7 @@ body {
 	margin: 0 auto;
 	line-height: 24px;
 	font-size: 18px;
+	font-weight: $font-light;
 	color: $font-color;
 
 	&:before {
@@ -82,6 +83,7 @@ body {
 		.content {
 
 			.content-section {
+				padding: 20px 0;
 				border-bottom: 1px solid $gray-border;
 
 				/***************/
@@ -89,6 +91,7 @@ body {
 				/***************/
 
 				&.main-banner {
+					padding: 0;
 					background-color: $orange-color6;
 
 					.main-banner-left {
@@ -125,7 +128,6 @@ body {
 				/***************/
 
 				&.search-form {
-					padding: 20px 0;
 					background-color: $orange-color8;
 
 					form {
@@ -168,6 +170,19 @@ body {
 						font-size: 14px;
 						font-weight: $font-light;
 						display: block;
+					}
+				}
+
+				/*******/
+				/* bio */
+				/*******/
+
+				&.bio {
+					.bio-right {
+						strong {
+							font-size: 36px;
+							font-weight: $font-light;
+						}
 					}
 				}
 			}
