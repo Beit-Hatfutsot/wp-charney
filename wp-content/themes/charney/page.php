@@ -12,6 +12,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 get_header(); ?>
 
 <?php
+	/**
+	 * get_search_form
+	 *
+	 * Get the search form
+	 */
+	get_search_form();
+?>
+
+<?php
 
 	// Content
 	if ( have_posts() ) : the_post();
@@ -20,15 +29,6 @@ get_header(); ?>
 		
 	endif;
 	
-?>
-
-<?php
-	/**
-	 * charney_after_main_content hook
-	 *
-	 * @hooked	charney_theme_content_wrapper_end - 10 (outputs closing divs for the main content)
-	 */
-	do_action('charney_after_main_content');
 ?>
 
 <?php get_footer(); ?>

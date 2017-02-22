@@ -42,7 +42,7 @@ function charney_theme_wrapper_start() {
  * @return	string
  */
 function charney_theme_wrapper_end() {
-	echo '</div></div></section>';
+	echo '</div></div></section><!-- page-content -->';
 }
 
 /**
@@ -66,7 +66,7 @@ function charney_theme_sidebar_wrapper_start() {
  * @return	string
  */
 function charney_theme_sidebar_wrapper_end() {
-	echo '</section></div>';
+	echo '</section><!-- sidebar --></div><!-- sidebar-wrapper -->';
 }
 
 /**
@@ -90,7 +90,7 @@ function charney_theme_content_wrapper_start() {
  * @return	string
  */
 function charney_theme_content_wrapper_end() {
-	echo '</section></div>';
+	echo '</section><!-- content --></div><!-- content-wrapper -->';
 }
 
 /**

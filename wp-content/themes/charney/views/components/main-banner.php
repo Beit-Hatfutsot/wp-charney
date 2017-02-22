@@ -18,9 +18,9 @@ if ( function_exists('get_field') ) {
 
 ?>
 
-<div class="main-banner row">
+<div class="content-section main-banner row">
 
-	<div class="main-banner-left col-sm-7">
+	<div class="main-banner-left col-lg-7 col-sm-6">
 
 		<?php
 			/**
@@ -31,11 +31,11 @@ if ( function_exists('get_field') ) {
 
 	</div>
 
-	<div class="main-banner-right col-sm-5">
+	<div class="main-banner-right col-lg-5 col-sm-6">
 
 		<div class="row">
 
-			<div class="col-sm-6">
+			<div class="about-page-wrapper col-xs-6">
 
 				<?php
 					/**
@@ -46,7 +46,7 @@ if ( function_exists('get_field') ) {
 
 			</div>
 
-			<div class="col-sm-6">
+			<div class="logo-wrapper col-xs-6">
 
 				<?php
 					/**

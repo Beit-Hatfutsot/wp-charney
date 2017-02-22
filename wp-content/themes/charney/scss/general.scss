@@ -65,7 +65,7 @@ body {
 				margin-bottom: 30px;
 
 				.shape-logo {
-					width: 238px;
+					max-width: 238px;
 				}
 			}
 		}
@@ -77,33 +77,97 @@ body {
 
 	.content-wrapper {
 		border-left: 1px solid $gray-border;
+		border-right: 1px solid $gray-border;
 
 		.content {
 
-			/***************/
-			/* main banner */
-			/***************/
+			.content-section {
+				border-bottom: 1px solid $gray-border;
 
-			.main-banner {
-				background-color: $orange-color6;
+				/***************/
+				/* main banner */
+				/***************/
 
-				.main-banner-left {
-					height: 75px;
-				}
+				&.main-banner {
+					background-color: $orange-color6;
 
-				.main-banner-right {
-					min-height: 75px;
-					text-align: center;
-
-					.about-page {
-						line-height: 75px;
-						font-size: 16px;
-						font-weight: $font-light;
+					.main-banner-left {
+						height: 75px;
 					}
 
-					.shape-bh-logo {
-						height: 53px;
-						margin: 11px 0;
+					.main-banner-right {
+						min-height: 75px;
+
+						.about-page-wrapper {
+							text-align: right;
+
+							.about-page {
+								line-height: 75px;
+								font-size: 16px;
+								font-weight: $font-light;
+							}
+						}
+
+						.logo-wrapper {
+							text-align: left;
+
+							.shape-bh-logo {
+								max-width: 100%;
+								height: 53px;
+								margin: 11px 0;
+							}
+						}
+					}
+				}
+
+				/***************/
+				/* search form */
+				/***************/
+
+				&.search-form {
+					padding: 20px 0;
+					background-color: $orange-color8;
+
+					form {
+						position: relative;
+						margin: 5px 0;
+
+						.search-field {
+							padding: 3px 30px 3px 3px;
+							width: 100%;
+							height: 30px;
+							border: 1px solid $orange-border;
+						}
+
+						.search-submit-wrapper {
+							position: absolute;
+							padding: 5px;
+							top: 0;
+							right: 0;
+							width: 30px;
+							height: 30px;
+
+							.shape-search {
+								width: 20px;
+								height: 20px;
+							}
+
+							.search-submit {
+								position: absolute;
+								top: 0;
+								right: 0;
+								width: 30px;
+								height: 30px;
+								background: transparent;
+							}
+						}
+					}
+
+					small {
+						line-height: 20px;
+						font-size: 14px;
+						font-weight: $font-light;
+						display: block;
 					}
 				}
 			}
@@ -164,12 +228,6 @@ body {
 /**********/
 
 footer {}
-
-/***************/
-/* search form */
-/***************/
-
-.search-form {}
 
 /**************/
 /* PhotoSwipe */
