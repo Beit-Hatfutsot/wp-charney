@@ -33,9 +33,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	?>
 
-	<!-- Sprite -->
-	<?php require ( THEME_ROOT . '/images/general/sprite.svg' ); ?>
-
 	<?php wp_head(); ?>
 
 </head>

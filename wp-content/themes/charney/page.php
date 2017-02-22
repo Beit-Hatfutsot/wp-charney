@@ -22,4 +22,13 @@ get_header(); ?>
 	
 ?>
 
+<?php
+	/**
+	 * charney_after_main_content hook
+	 *
+	 * @hooked	charney_theme_content_wrapper_end - 10 (outputs closing divs for the main content)
+	 */
+	do_action('charney_after_main_content');
+?>
+
 <?php get_footer(); ?>

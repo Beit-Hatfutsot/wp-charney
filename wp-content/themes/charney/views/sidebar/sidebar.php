@@ -10,7 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( is_active_sidebar('left-sidebar') ) {
-	echo '<div class="sidebar">';
+	echo '<div class="sidebar-content">';
 		dynamic_sidebar('left-sidebar');
 	echo '</div>';
 }

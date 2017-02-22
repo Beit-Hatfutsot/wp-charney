@@ -35,15 +35,33 @@ module.exports = function(grunt) {
 			}
 		},
 
+		svgstore: {
+			options: {
+				prefix: 'shape-',
+				includeTitleElement: false
+			},
+
+			default: {
+				files: {
+					'images/general/svg-defs.svg': ['images/svgs/*.svg']
+				}
+			}
+		},
+
 		watch: {
+			js: {
+				files: ['js/*.js'],
+				tasks: ['uglify']  
+			},
+
 			css: {
 				files: ['scss/*.scss', 'scss/**/*.scss'],
 				tasks: ['sass']
 			},
 
-			js: {
-				files: ['js/*.js'],
-				tasks: ['uglify']  
+			svg: {
+				files: ['images/svgs/*.svg'],
+				tasks: ['svgstore']
 			}
 		}
 	});
@@ -51,9 +69,10 @@ module.exports = function(grunt) {
 	// Load plugins
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-svgstore');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default tasks
-	grunt.registerTask('default', ['uglify', 'sass']);
+	grunt.registerTask('default', ['uglify', 'sass', 'svgstore']);
 
 };

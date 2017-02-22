@@ -15,11 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <?php
 	/**
-	 * charney_after_main_content hook
+	 * charney_after_page_content hook
 	 *
-	 * @hooked	charney_theme_wrapper_end - 10 (outputs closing divs for the content)
+	 * @hooked	charney_theme_wrapper_end - 10 (outputs closing divs for the page)
 	 */
-	do_action('charney_after_main_content');
+	do_action('charney_after_page_content');
 ?>
 
 <script>

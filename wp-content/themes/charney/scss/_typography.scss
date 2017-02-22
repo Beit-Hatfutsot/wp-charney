@@ -5,12 +5,14 @@
 /*************/
 
 h1, h2, h3, h4, h5, h6 {
+	margin: 0;
 	@include font;
 }
 
 h1 {
-	font-size: 28px;
+	font-size: 26px;
 	font-weight: $font-light;
+	@include vertical-align;
 }
 
 h2 {
@@ -123,3 +125,15 @@ img {
 /**************/
 
 blockquote {}
+
+/************/
+/* svg-defs */
+/************/
+
+body > svg {
+	display: none;
+}
+
+.shape {
+	vertical-align: top;
+}

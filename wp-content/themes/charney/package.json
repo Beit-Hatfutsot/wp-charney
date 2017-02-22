@@ -18,8 +18,9 @@
   "homepage": "https://github.com/Beit-Hatfutsot/wp-charney#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
-    "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^2.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-svgstore": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0"
   }
 }

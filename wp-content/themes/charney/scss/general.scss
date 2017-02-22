@@ -42,12 +42,6 @@ body {
 	}
 }
 
-/**********/
-/* header */
-/**********/
-
-header {}
-
 /****************/
 /* page content */
 /****************/
@@ -58,38 +52,87 @@ header {}
 	/* sidebar */
 	/***********/
 	
-	.sidebar {}
+	.sidebar-wrapper {
+		.sidebar {
+			padding: 20px 0;
+
+			/********/
+			/* logo */
+			/********/
+
+			.logo {
+				text-align: center;
+				margin-bottom: 30px;
+
+				.shape-logo {
+					width: 238px;
+				}
+			}
+		}
+	}
 
 	/***********/
 	/* content */
 	/***********/
 
-	.content {
+	.content-wrapper {
+		border-left: 1px solid $gray-border;
 
-		/***********/
-		/* gallery */
-		/***********/
+		.content {
 
-		.gallery-layout-content {
-			margin-bottom: 30px;
+			/***************/
+			/* main banner */
+			/***************/
 
-			.gallery {
-				.gallery-col {
-					.gallery-item {
-						img {
-							margin-bottom: 15px;
-							width: 100%;
-							height: auto;
-						}
+			.main-banner {
+				background-color: $orange-color6;
 
-						&:hover {
+				.main-banner-left {
+					height: 75px;
+				}
+
+				.main-banner-right {
+					min-height: 75px;
+					text-align: center;
+
+					.about-page {
+						line-height: 75px;
+						font-size: 16px;
+						font-weight: $font-light;
+					}
+
+					.shape-bh-logo {
+						height: 53px;
+						margin: 11px 0;
+					}
+				}
+			}
+
+			/***********/
+			/* gallery */
+			/***********/
+
+			.gallery-layout-content {
+				margin-bottom: 30px;
+
+				.gallery {
+					.gallery-col {
+						.gallery-item {
 							img {
-								@include opacity(0.7);
+								margin-bottom: 15px;
+								width: 100%;
+								height: auto;
 							}
-						}
 
-						figcaption {
-							display: none;
+							&:hover {
+								img {
+									@include opacity(0.7);
+								}
+							}
+
+							figcaption {
+								display: none;
+							}
 						}
 					}
 				}
