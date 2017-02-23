@@ -14,7 +14,7 @@ get_header(); ?>
 <?php
 
 	// Content
-	get_template_part('views/blog/archive');
+	get_template_part( 'views/blog/archive' );
 	
 ?>
 

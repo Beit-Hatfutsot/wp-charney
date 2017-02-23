@@ -9,11 +9,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// Variables
+/**
+ * Variables
+ */
 if ( function_exists('get_field') ) {
-	$intro		= get_field('acf-general-options_introduction', 'option');
-	$about_text	= get_field('acf-general-options_about_page_text', 'option');
-	$about_link	= get_field('acf-general-options_about_page_link', 'option');
+	$intro		= get_field( 'acf-general-options_introduction', 'option' );
+	$about_text	= get_field( 'acf-general-options_about_page_text', 'option' );
+	$about_link	= get_field( 'acf-general-options_about_page_link', 'option' );
 }
 
 ?>
@@ -55,7 +57,7 @@ if ( function_exists('get_field') ) {
 					?>
 
 					<a href="//www.bh.org.il" target="_blank">
-						<?php get_template_part('views/svgs/shape', 'bh-logo'); ?>
+						<?php get_template_part( 'views/svgs/shape', 'bh-logo' ); ?>
 					</a>
 
 			</div>

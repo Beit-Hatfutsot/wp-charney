@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <div class="not-found">
 
-	<p class="not-found-title"><?php _e('No Records Found', 'charney'); ?></p>
-	<p><?php printf('%s <a href="' . HOME . '">%s</a>', __('Return to', 'charney'), __('homepage', 'charney') ); ?></p>
+	<p class="not-found-title"><?php _e( 'No Records Found', 'charney' ); ?></p>
+	<p><?php printf('%s <a href="' . HOME . '">%s</a>', __( 'Return to', 'charney' ), __( 'homepage', 'charney' ) ); ?></p>
 
 </div>

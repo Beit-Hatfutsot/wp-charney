@@ -9,11 +9,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// Variables
+/**
+ * Variables
+ */
 if ( function_exists('get_field') ) {
-	$title		= get_field('acf-main_bio_title');
-	$image		= get_field('acf-main_bio_image');
-	$content	= get_field('acf-main_bio_content');
+	$title		= get_field( 'acf-main_bio_title' );
+	$image		= get_field( 'acf-main_bio_image' );
+	$content	= get_field( 'acf-main_bio_content' );
 }
 
 ?>

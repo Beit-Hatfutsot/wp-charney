@@ -11,21 +11,25 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// Variables
-$search_string	= __('Search', 'charney');
+/**
+ * Variables
+ */
+$search_string	= __( 'Search', 'charney' );
 $template		= '';	// Page template
 
-// Add/modify variables based on page template
+/**
+ * Add/modify variables based on page template
+ */
 if ( 'main.php' == basename( get_page_template() ) ) {
 	// Main page template
 	$template = 'main';
 
-	$title		= __("Know what you're looking for?", 'charney');
-	$comment	= __('Unsure? you are welcome to search by category using the menu', 'charney');
+	$title		= __( "Know what you're looking for?", 'charney' );
+	$comment	= __( 'Unsure? you are welcome to search by category using the menu', 'charney' );
 }
 else {
 	// Category archive
-	$search_string	= __('Search in', 'charney');
+	$search_string	= __( 'Search in', 'charney' );
 }
 
 ?>
@@ -45,7 +49,7 @@ else {
 			/**
 			 * Display the search form
 			 */
-			include( locate_template('views/components/searchform.php') );
+			include( locate_template( 'views/components/searchform.php' ) );
 		?>
 
 		<?php

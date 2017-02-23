@@ -12,12 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * charney_admin_head
  *
- * Load scripts and styles on the dashboard
+ * This function loads scripts and styles on admin
  *
  * @param	N/A
  * @return	N/A
  */
 function charney_admin_head() {
+
 	wp_enqueue_style('admin-general');
+
 }
-add_action('admin_head', 'charney_admin_head');
+add_action( 'admin_head', 'charney_admin_head' );

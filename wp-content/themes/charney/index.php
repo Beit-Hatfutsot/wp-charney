@@ -17,12 +17,12 @@ get_header(); ?>
 	if ( have_posts() ) :
 	
 		while ( have_posts() ) : the_post();
-			get_template_part('views/page/loop');
+			get_template_part( 'views/page/loop' );
 		endwhile;
 		
 	else :
 	
-		get_template_part('views/components/not-found');
+		get_template_part( 'views/components/not-found' );
 		
 	endif;
 	

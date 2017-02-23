@@ -25,7 +25,7 @@ get_header(); ?>
 	// Content
 	if ( have_posts() ) : the_post();
 	
-		get_template_part('views/page/page');
+		get_template_part( 'views/page/page' );
 		
 	endif;
 	

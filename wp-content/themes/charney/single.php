@@ -16,7 +16,7 @@ get_header(); ?>
 	// Content
 	if ( have_posts() ) : the_post();
 
-		get_template_part('views/blog/single');
+		get_template_part( 'views/blog/single' );
 
 	endif;
 	

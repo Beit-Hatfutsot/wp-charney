@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		if ( $google_fonts ) {
 			foreach ( $google_fonts as $key => $val ) {
-				printf ("<link href='%s' rel='stylesheet'>", $val);
+				printf ( "<link href='%s' rel='stylesheet'>", $val );
 			}
 		}
 

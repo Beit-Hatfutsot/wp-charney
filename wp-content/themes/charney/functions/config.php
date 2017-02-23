@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 if ( function_exists('wp_get_theme') ) {
 	$theme_data		= wp_get_theme();
-	$theme_version	= $theme_data->get('Version');
+	$theme_version	= $theme_data->get( 'Version' );
 }
 else {
 	$theme_data		= get_theme_data( trailingslashit( get_stylesheet_directory() ) . 'style.css' );
@@ -27,13 +27,14 @@ define( 'VERSION', $theme_version );
  * Other constants
  */
 $stylesheet = get_stylesheet();
-$theme_root = get_theme_root($stylesheet);
+$theme_root = get_theme_root( $stylesheet );
 
 define( 'TEMPLATE',		get_bloginfo('template_directory') );
 define( 'HOME',			home_url( '/' ) );
 define( 'THEME_ROOT',	"$theme_root/$stylesheet" );
 define( 'CSS_DIR',		TEMPLATE . '/css' );
 define( 'JS_DIR',		TEMPLATE . '/js' );
+define( 'WIDGETS_PATH',	THEME_ROOT . '/widgets' );
 
 /**
  * Globals

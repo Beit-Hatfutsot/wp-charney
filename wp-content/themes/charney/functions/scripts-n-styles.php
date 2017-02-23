@@ -9,11 +9,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_action('login_enqueue_scripts',	'charney_login_scripts_n_styles');
-add_action('admin_enqueue_scripts',	'charney_admin_scripts_n_styles');
-add_action('wp_enqueue_scripts',	'charney_wp_scripts_n_styles');
+add_action( 'login_enqueue_scripts',	'charney_login_scripts_n_styles' );
+add_action( 'admin_enqueue_scripts',	'charney_admin_scripts_n_styles' );
+add_action( 'wp_enqueue_scripts',		'charney_wp_scripts_n_styles' );
 
-add_filter('mce_css', 'charney_editor_style');
+add_filter( 'mce_css', 'charney_editor_style' );
 
 /**
  * charney_login_scripts_n_styles
@@ -22,7 +22,9 @@ add_filter('mce_css', 'charney_editor_style');
  * @return	N/A
  */
 function charney_login_scripts_n_styles() {
+
 	wp_register_style( 'admin-login',	CSS_DIR . '/admin/login.css',	array(),	VERSION );
+
 }
 
 /**
@@ -32,7 +34,9 @@ function charney_login_scripts_n_styles() {
  * @return	N/A
  */
 function charney_admin_scripts_n_styles() {
+
 	wp_register_style( 'admin-general',	CSS_DIR . '/admin/general.css',	array(),	VERSION );
+
 }
 
 /**
@@ -42,6 +46,7 @@ function charney_admin_scripts_n_styles() {
  * @return	N/A
  */
 function charney_wp_scripts_n_styles() {
+
 	/**
 	 * Styles
 	 */
@@ -60,17 +65,19 @@ function charney_wp_scripts_n_styles() {
 	wp_register_script( 'photoswipe-ui-default',	JS_DIR . '/libs/PhotoSwipe/photoswipe-ui-default.min.js',	array('photoswipe'),	VERSION,	true );
 	wp_register_script( 'general',					JS_DIR . '/min/general.min.js',								array('bootstrap'),		VERSION,	true );
 	wp_enqueue_script ( 'charney-analytics',		JS_DIR . '/charney-analytics.js',							array('jquery'),		VERSION,	false );
+
 }
 
 /**
  * charney_editor_style
  *
- * tinyMCE styles
+ * This function adds styles for tinyMCE
  *
- * @param	string
- * @return	string
+ * @param	$styles (string) tinyMCE styles
+ * @return	(string)
  */
-function charney_editor_style($styles) {
+function charney_editor_style( $styles ) {
+
 	$styles .= ', ' . CSS_DIR . '/admin/' . 'editor.css';
 
 	// Google Fonts
@@ -83,5 +90,7 @@ function charney_editor_style($styles) {
 		}
 	}
 
+	// return
 	return $styles;
+
 }

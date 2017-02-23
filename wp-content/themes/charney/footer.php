@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 *
 	 * @hooked	charney_theme_content_wrapper_end - 10 (outputs closing divs for the main content)
 	 */
-	do_action('charney_after_main_content');
+	do_action( 'charney_after_main_content' );
 ?>
 
 <?php
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 *
 	 * @hooked	charney_theme_wrapper_end - 10 (outputs closing divs for the page)
 	 */
-	do_action('charney_after_page_content');
+	do_action( 'charney_after_page_content' );
 ?>
 
 <script>

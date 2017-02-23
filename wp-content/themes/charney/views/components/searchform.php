@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			/**
 			 * Display BH logo
 			 */
-			get_template_part('views/svgs/shape', 'search');
+			get_template_part( 'views/svgs/shape', 'search' );
 		?>
 		<input type="submit" class="search-submit" value="" title="<?php echo $search_string; ?>" alt="<?php echo $search_string; ?>" />
 	</div>

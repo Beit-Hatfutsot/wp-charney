@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	/**
 	 * Display header meta
 	 */
-	get_template_part('views/header/header', 'meta');
+	get_template_part( 'views/header/header', 'meta' );
 ?>
 
 <body <?php body_class(); ?>>
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		/**
 		 * svg-defs.svg
 		 */
-		include_once('images/general/svg-defs.svg');
+		include_once( 'images/general/svg-defs.svg' );
 	?>
 
 	<div id="page" class="site">
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		 *
 		 * @hooked	charney_theme_wrapper_start - 10 (outputs opening divs for the page)
 		 */
-		do_action('charney_before_page_content');
+		do_action( 'charney_before_page_content' );
 	?>
 
 	<?php
@@ -56,12 +56,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		 *
 		 * @hooked	charney_theme_content_wrapper_start - 10 (outputs opening divs for the main content)
 		 */
-		do_action('charney_before_main_content');
+		do_action( 'charney_before_main_content' );
 	?>
 
 	<?php
 		/**
 		 * Display the main banner
 		 */
-		get_template_part('views/components/main-banner');
+		get_template_part( 'views/components/main-banner' );
 	?>

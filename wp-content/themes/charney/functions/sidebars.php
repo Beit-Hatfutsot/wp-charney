@@ -12,12 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * charney_register_sidebars
  *
- * Register theme sidebars
+ * This function registers theme sidebars
  *
  * @param	N/A
  * @return	N/A
  */
 function charney_register_sidebars() {
+
 	// Left sidebar
 	register_sidebar(
 		array(
@@ -30,5 +31,6 @@ function charney_register_sidebars() {
 			'after_title'	=> '</h2>'
 		)
 	);
+
 }
-add_action('widgets_init', 'charney_register_sidebars');
+add_action( 'widgets_init', 'charney_register_sidebars' );

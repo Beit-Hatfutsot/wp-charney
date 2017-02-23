@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 *
 	 * @hooked	charney_theme_sidebar_wrapper_start - 10 (outputs opening divs for the sidebar)
 	 */
-	do_action('charney_before_sidebar');
+	do_action( 'charney_before_sidebar' );
 ?>
 
 <?php
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	<div class="logo">
 		<a href="<?php echo HOME; ?>">
-			<?php get_template_part('views/svgs/shape', 'logo'); ?>
+			<?php get_template_part( 'views/svgs/shape', 'logo' ); ?>
 		</a>
 	</div>
 
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	/**
 	 * Display the left sidebar
 	 */
-	get_template_part('views/sidebar/sidebar');
+	get_template_part( 'views/sidebar/sidebar' );
 ?>
 
 <?php
@@ -45,5 +45,5 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	 *
 	 * @hooked	charney_theme_sidebar_wrapper_end - 10 (outputs closing divs for the sidebar)
 	 */
-	do_action('charney_after_sidebar');
+	do_action( 'charney_after_sidebar' );
 ?>

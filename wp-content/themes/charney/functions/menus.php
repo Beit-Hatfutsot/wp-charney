@@ -21,13 +21,15 @@ $menus = array(
 /**
  * charney_register_menus
  *
- * Register theme menus
+ * This function registers theme menus
  *
  * @param	N/A
  * @return	N/A
  */
 function charney_register_menus() {
+
 	global $menus;
 	register_nav_menus($menus);
+
 }
-add_action('init', 'charney_register_menus');
+add_action( 'init', 'charney_register_menus' );
