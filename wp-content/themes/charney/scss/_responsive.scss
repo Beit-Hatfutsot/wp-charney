@@ -52,6 +52,20 @@
 	.page-content {
 
 		/***********/
+		/* sidebar */
+		/***********/
+		
+		.sidebar-wrapper {
+			.sidebar {
+				.sidebar-content {
+					.widget {
+						display: none;
+					}
+				}
+			}
+		}
+
+		/***********/
 		/* content */
 		/***********/
 

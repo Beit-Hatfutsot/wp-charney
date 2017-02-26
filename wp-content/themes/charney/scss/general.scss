@@ -123,22 +123,6 @@ body {
 							}
 						}
 					}
-
-					/*************/
-					/* main menu */
-					/*************/
-
-					&.widget_nav_menu {
-
-					}
-
-					/*******************/
-					/* categories menu */
-					/*******************/
-
-					&.charney-categories-menu-widget {
-
-					}
 				}
 			}
 		}
@@ -266,8 +250,8 @@ body {
 						@include font;
 
 						p {
-							line-height: 24px;
-							font-size: 18px;
+							line-height: 22px;
+							font-size: 16px;
 							font-weight: $font-light;
 							color: $font-color;
 						}
@@ -326,21 +310,31 @@ body {
 										width: 75%;
 
 										.tl-headline-date {
-											margin-top: 10px;
+											float: left;
+											margin: 10px 20px 0 0;
+
+											&:before {
+												content: "(";
+											}
+
+											&:after {
+												content: ")";
+											}
 										}
 
 										.tl-headline {
+											line-height: 28px;
+											font-size: 24px;
 											font-weight: $font-light;
 										}
 									}
 								}
 
-								&.tl-slide-titleslide {
+								&.tl-slide-text-only {
 									.tl-slide-content {
 										.tl-text {
-											.tl-headline-date {
-												margin-top: 0;
-											}
+											width: 100%;
+											max-width: 100%;
 										}
 									}
 								}
