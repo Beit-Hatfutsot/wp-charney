@@ -26,6 +26,11 @@ var $ = jQuery,
 				return this.height( Math.max.apply(this, $.map(this, function(e) { return $(e).height() })) );
 			}
 
+			// Timeline
+			if ( js_globals.page_template == 'main.php' && js_globals.timeline_source.length ) {
+				Charney_general.timeline(js_globals.timeline_source);
+			}
+
 			// Embedded video - responsive treatment
 			$('.page-content').find('iframe, object, embed').each(function() {
 				if ( $(this).attr('name') == 'chekout_frame' || $(this).attr('name') == 'pelecard_frame' || $(this).hasClass('no-flex') )
@@ -61,6 +66,25 @@ var $ = jQuery,
 		},
 
 		/**
+		 * timeline
+		 *
+		 * Load timeline
+		 *
+		 * @param	src (string)
+		 * @return	N/A
+		 */
+		timeline : function(src) {
+
+			var timeline_options = {
+				timenav_position : 'top',
+				slide_padding_lr : 50
+			}
+
+			timeline = new TL.Timeline('timeline-embed', src, timeline_options);
+
+		},
+
+		/**
 		 * lazyLoad
 		 *
 		 * Load gallery images
@@ -69,7 +93,7 @@ var $ = jQuery,
 		 * @param	amount (int)
 		 * @return	N/A
 		 */
-		lazyLoad : function (offset, amount) {
+		lazyLoad : function(offset, amount) {
 
 			var index, j;
 
@@ -231,7 +255,7 @@ var $ = jQuery,
 		 * @param	N/A
 		 * @return	N/A
 		 */
-		breakpoint_refreshValue : function () {
+		breakpoint_refreshValue : function() {
 
 			var new_breakpoint = window.getComputedStyle(
 				document.querySelector('body'), ':before'

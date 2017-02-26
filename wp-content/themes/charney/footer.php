@@ -11,6 +11,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Variables
+ */
+global $globals;
+
 ?>
 
 <?php
@@ -34,7 +39,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <script>
 
 	var js_globals = {};
-	js_globals.template_url	= "<?php echo TEMPLATE; ?>";
+	js_globals.template_url		= "<?php echo TEMPLATE; ?>";
+	js_globals.page_template	= "<?php echo $globals['page_template']; ?>";
+	js_globals.timeline_source	= "<?php echo $globals['timeline_source']; ?>";
 
 </script>
 
@@ -57,6 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	wp_enqueue_script( 'jquery-ui' );
 	wp_enqueue_script( 'photoswipe' );
 	wp_enqueue_script( 'photoswipe-ui-default' );
+	if ( $globals['page_template'] == 'main.php' && $globals['timeline_source'] != '' ) wp_enqueue_script( 'timeline' );
 	wp_enqueue_script( 'general' );
 
 ?>

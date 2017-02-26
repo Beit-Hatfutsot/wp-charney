@@ -153,7 +153,6 @@ body {
 		border-right: 1px solid $gray-border;
 
 		.content {
-
 			.content-section {
 				padding: 20px 0;
 				border-bottom: 1px solid $gray-border;
@@ -254,6 +253,106 @@ body {
 						strong {
 							font-size: 36px;
 							font-weight: $font-light;
+						}
+					}
+				}
+
+				/************/
+				/* timeline */
+				/************/
+
+				&.timeline {
+					#timeline-embed {
+						@include font;
+
+						p {
+							line-height: 24px;
+							font-size: 18px;
+							font-weight: $font-light;
+							color: $font-color;
+						}
+
+						/*************/
+						/* navigator */
+						/*************/
+
+						.tl-timenav {
+							background-color: $gray-color7;
+							border-top: 1px solid $gray-border;
+
+							.tl-timemarker {
+								.tl-timemarker-line-left,
+								.tl-timemarker-line-right {
+									border-color: $gray-color5;
+								}
+
+								.tl-timemarker-content-container {
+									background-color: $gray-color5;
+
+									.tl-icon-image,
+									.tl-headline {
+										color: $font-color;
+									}
+								}
+
+								&.tl-timemarker-active {
+									.tl-timemarker-line-left,
+									.tl-timemarker-line-right {
+										border-color: $orange-color5;
+									}
+
+									.tl-timemarker-content-container {
+										background-color: $orange-color5;
+									}
+								}
+							}
+						}
+
+						/*********/
+						/* slide */
+						/*********/
+
+						.tl-storyslider {
+							.tl-slide {
+								.tl-slide-content {
+									width: 100% !important;
+
+									.tl-media {
+										margin-top: 12px;
+										min-width: 25%;
+									}
+
+									.tl-text {
+										width: 75%;
+
+										.tl-headline-date {
+											margin-top: 10px;
+										}
+
+										.tl-headline {
+											font-weight: $font-light;
+										}
+									}
+								}
+
+								&.tl-slide-titleslide {
+									.tl-slide-content {
+										.tl-text {
+											.tl-headline-date {
+												margin-top: 0;
+											}
+										}
+									}
+								}
+							}
+
+							.tl-slidenav-previous,
+							.tl-slidenav-next {
+								.tl-slidenav-title,
+								.tl-slidenav-description {
+									display: none;
+								}
+							}
 						}
 					}
 				}

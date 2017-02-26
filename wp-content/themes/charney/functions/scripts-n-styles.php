@@ -50,21 +50,23 @@ function charney_wp_scripts_n_styles() {
 	/**
 	 * Styles
 	 */
-	wp_enqueue_style ( 'bootstrap',					CSS_DIR . '/libs/bootstrap.min.css',						array(),				VERSION );
-	wp_enqueue_style ( 'jquery-ui',					CSS_DIR . '/libs/jquery-ui.min.css',						array('bootstrap'),		VERSION );
-	wp_enqueue_style ( 'photoswipe',				CSS_DIR . '/libs/PhotoSwipe/photoswipe.css',				array(),				VERSION );
-	wp_enqueue_style ( 'photoswipe-default-skin',	CSS_DIR . '/libs/PhotoSwipe/default-skin/default-skin.css',	array(),				VERSION );
-	wp_enqueue_style ( 'general',					CSS_DIR . '/general.css',									array('bootstrap'),		VERSION );
+	wp_enqueue_style ( 'bootstrap',					CSS_DIR . '/libs/bootstrap.min.css',							array(),				VERSION );
+	wp_enqueue_style ( 'jquery-ui',					CSS_DIR . '/libs/jquery-ui.min.css',							array('bootstrap'),		VERSION );
+	wp_enqueue_style ( 'photoswipe',				CSS_DIR . '/libs/PhotoSwipe/photoswipe.css',					array(),				VERSION );
+	wp_enqueue_style ( 'photoswipe-default-skin',	CSS_DIR . '/libs/PhotoSwipe/default-skin/default-skin.css',		array(),				VERSION );
+	wp_enqueue_style ( 'timeline',					'//cdn.knightlab.com/libs/timeline3/latest/css/timeline.css',	array(),				VERSION );
+	wp_enqueue_style ( 'general',					CSS_DIR . '/general.css',										array('bootstrap'),		VERSION );
 
 	/**
 	 * Scripts
 	 */
-	wp_register_script( 'bootstrap',				JS_DIR . '/libs/bootstrap.min.js',							array('jquery'),		VERSION,	true );
-	wp_register_script( 'jquery-ui',				JS_DIR . '/libs/jquery-ui.min.js',							array('bootstrap'),		VERSION,	true );
-	wp_register_script( 'photoswipe',				JS_DIR . '/libs/PhotoSwipe/photoswipe.min.js',				array('jquery'),		VERSION,	true );
-	wp_register_script( 'photoswipe-ui-default',	JS_DIR . '/libs/PhotoSwipe/photoswipe-ui-default.min.js',	array('photoswipe'),	VERSION,	true );
-	wp_register_script( 'general',					JS_DIR . '/min/general.min.js',								array('bootstrap'),		VERSION,	true );
-	wp_enqueue_script ( 'charney-analytics',		JS_DIR . '/charney-analytics.js',							array('jquery'),		VERSION,	false );
+	wp_register_script( 'bootstrap',				JS_DIR . '/libs/bootstrap.min.js',								array('jquery'),		VERSION,	true );
+	wp_register_script( 'jquery-ui',				JS_DIR . '/libs/jquery-ui.min.js',								array('bootstrap'),		VERSION,	true );
+	wp_register_script( 'photoswipe',				JS_DIR . '/libs/PhotoSwipe/photoswipe.min.js',					array('jquery'),		VERSION,	true );
+	wp_register_script( 'photoswipe-ui-default',	JS_DIR . '/libs/PhotoSwipe/photoswipe-ui-default.min.js',		array('photoswipe'),	VERSION,	true );
+	wp_register_script( 'timeline',					'//cdn.knightlab.com/libs/timeline3/latest/js/timeline.js',		array('jquery'),		VERSION,	true );
+	wp_register_script( 'general',					JS_DIR . '/min/general.min.js',									array('bootstrap'),		VERSION,	true );
+	wp_enqueue_script ( 'charney-analytics',		JS_DIR . '/charney-analytics.js',								array('jquery'),		VERSION,	false );
 
 }
 

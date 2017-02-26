@@ -16,11 +16,11 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 1
+            "endpoint": 0
         },
         {
             "key": "field_58adad4c94f4e",
-            "label": "Bio Title",
+            "label": "Title",
             "name": "acf-main_bio_title",
             "type": "text",
             "instructions": "",
@@ -39,7 +39,7 @@
         },
         {
             "key": "field_58adadba94f4f",
-            "label": "Bio Image",
+            "label": "Image",
             "name": "acf-main_bio_image",
             "type": "image",
             "instructions": "Image Dimensions (px): 450x450",
@@ -63,7 +63,7 @@
         },
         {
             "key": "field_58adae4194f50",
-            "label": "Bio Content",
+            "label": "Content",
             "name": "acf-main_bio_content",
             "type": "wysiwyg",
             "instructions": "",
@@ -79,6 +79,57 @@
             "toolbar": "basic",
             "media_upload": 0,
             "delay": 0
+        },
+        {
+            "key": "field_58b1e47cf6125",
+            "label": "Timeline",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_58b227664a8f4",
+            "label": "Title",
+            "name": "acf-main_timeline_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_58b1e49af6126",
+            "label": "Source",
+            "name": "acf-main_timeline_source",
+            "type": "url",
+            "instructions": "Google spreadsheet Link",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/docs.google.com\/spreadsheets\/"
         }
     ],
     "location": [
@@ -100,5 +151,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1487783974
+    "modified": 1488070626
 }

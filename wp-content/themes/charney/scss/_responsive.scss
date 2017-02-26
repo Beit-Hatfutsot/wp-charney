@@ -156,3 +156,52 @@
 @media (min-width: 481px) and (max-width: 991px) {}
 
 @media (min-width: 481px) and (max-width: 767px) {}
+
+@media (max-width: 650px),
+       (min-width: 768px) and (max-width: 991px) {
+
+	/****************/
+	/* page content */
+	/****************/
+
+	.page-content {
+
+		/***********/
+		/* content */
+		/***********/
+
+		.content-wrapper {
+			.content {
+				.content-section {
+
+					/************/
+					/* timeline */
+					/************/
+
+					&.timeline {
+						#timeline-embed {
+
+							/*********/
+							/* slide */
+							/*********/
+
+							.tl-storyslider {
+								.tl-slide {
+									.tl-slide-content {
+										.tl-media {
+											margin-top: 0;
+										}
+
+										.tl-text {
+											width: 100%;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
