@@ -13,6 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * ACF register field groups
  * 
  * @fieldgroup	Main
+ * @fieldgroup	Post Attributes - Image
+ * @fieldgroup	Post Attributes - Video
+ * @fieldgroup	Post Attributes - Audio
+ * @fieldgroup	Post Attributes - PDF
  * @fieldgroup	General Options
  */
 if( function_exists('acf_add_local_field_group') ):
@@ -161,6 +165,205 @@ acf_add_local_field_group(array (
 		),
 	),
 	'menu_order' => 1,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => array (
+		0 => 'the_content',
+	),
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_58f5e8f15c5e6',
+	'title' => 'Post Attributes - Image',
+	'fields' => array (
+		array (
+			'key' => 'field_58f5f345afa58',
+			'label' => 'Image',
+			'name' => 'acf-post-attributes_image',
+			'type' => 'image',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+			'preview_size' => 'thumbnail',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => 'jpg,jpeg,png',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+			array (
+				'param' => 'post_format',
+				'operator' => '==',
+				'value' => 'image',
+			),
+		),
+	),
+	'menu_order' => 2,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => array (
+		0 => 'the_content',
+	),
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_58f5f4a695641',
+	'title' => 'Post Attributes - Video',
+	'fields' => array (
+		array (
+			'key' => 'field_58f5f4a69e6a7',
+			'label' => 'Video URL',
+			'name' => 'acf-post-attributes_video_url',
+			'type' => 'url',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => 'http://',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+			array (
+				'param' => 'post_format',
+				'operator' => '==',
+				'value' => 'video',
+			),
+		),
+	),
+	'menu_order' => 3,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => array (
+		0 => 'the_content',
+	),
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_58f5f52796298',
+	'title' => 'Post Attributes - Audio',
+	'fields' => array (
+		array (
+			'key' => 'field_58f5f5279ccd8',
+			'label' => 'Audio URL',
+			'name' => 'acf-post-attributes_audio_url',
+			'type' => 'url',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => 'http://',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+			array (
+				'param' => 'post_format',
+				'operator' => '==',
+				'value' => 'audio',
+			),
+		),
+	),
+	'menu_order' => 4,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => array (
+		0 => 'the_content',
+	),
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_58f5f6db44c3d',
+	'title' => 'Post Attributes - PDF',
+	'fields' => array (
+		array (
+			'key' => 'field_58f5f6db5834b',
+			'label' => 'PDF',
+			'name' => 'acf-post-attributes_pdf',
+			'type' => 'file',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'url',
+			'library' => 'all',
+			'min_size' => '',
+			'max_size' => '',
+			'mime_types' => 'pdf',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+			array (
+				'param' => 'post_format',
+				'operator' => '==',
+				'value' => 'link',
+			),
+		),
+	),
+	'menu_order' => 5,
 	'position' => 'normal',
 	'style' => 'default',
 	'label_placement' => 'top',
