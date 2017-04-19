@@ -13,6 +13,13 @@ get_header(); ?>
 
 <?php
 	/**
+	 * Display the category description
+	 */
+	get_template_part( 'views/blog/archive', 'desc' );
+?>
+
+<?php
+	/**
 	 * get_search_form
 	 *
 	 * Get the search form

@@ -178,6 +178,19 @@ body {
 					}
 				}
 
+				/**********************/
+				/* archive desciption */
+				/**********************/
+
+				&.archive-desc {
+					background-color: $orange-color7;
+
+					strong {
+						font-size: 28px;
+						font-weight: $font-light;
+					}
+				}
+
 				/***************/
 				/* search form */
 				/***************/

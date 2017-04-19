@@ -25,14 +25,14 @@
 	/**
 	 * Display the short bio
 	 */
-	get_template_part('views/main/main', 'bio');
+	get_template_part( 'views/main/main', 'bio' );
 ?>
 
 <?php
 	/**
 	 * Display the timeline
 	 */
-	get_template_part('views/main/main', 'timeline');
+	get_template_part( 'views/main/main', 'timeline' );
 ?>
 
 <?php get_footer(); ?>
