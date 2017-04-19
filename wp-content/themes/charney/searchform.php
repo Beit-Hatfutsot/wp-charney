@@ -14,22 +14,26 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Variables
  */
-$search_string	= __( 'Search', 'charney' );
 $template		= '';	// Page template
 
 /**
  * Add/modify variables based on page template
  */
-if ( 'main.php' == basename( get_page_template() ) ) {
-	// Main page template
-	$template = 'main';
+if ( is_category() ) {
 
-	$title		= __( "Know what you're looking for?", 'charney' );
-	$comment	= __( 'Unsure? you are welcome to search by category using the menu', 'charney' );
+	// Category archive
+	$template		= 'archive';
+	$search_string	= single_cat_title( __( 'Search in ', 'charney' ), false );
+
 }
 else {
-	// Category archive
-	$search_string	= __( 'Search in', 'charney' );
+
+	// Page
+	$template		= 'page';
+	$search_string	= __( 'Search', 'charney' );
+	$title			= __( "Know what you're looking for?", 'charney' );
+	$comment		= __( 'Unsure? you are welcome to search by category using the menu', 'charney' );
+
 }
 
 ?>
@@ -42,7 +46,7 @@ else {
 			/**
 			 * Search form title
 			 */
-			echo $template == 'main' && $title ? '<h2 class="section-title">' . $title . '</h2>' : '';
+			echo $template == 'page' && $title ? '<h2 class="section-title">' . $title . '</h2>' : '';
 		?>
 
 		<?php
@@ -56,7 +60,7 @@ else {
 			/**
 			 * Search form comment
 			 */
-			echo $template == 'main' && $comment ? '<small>' . $comment . '</small>' : '';
+			echo $template == 'page' && $comment ? '<small>' . $comment . '</small>' : '';
 		?>
 
 	</div>

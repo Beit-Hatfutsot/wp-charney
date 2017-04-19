@@ -12,6 +12,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 get_header(); ?>
 
 <?php
+	/**
+	 * get_search_form
+	 *
+	 * Get the search form
+	 */
+	get_search_form();
+?>
+
+<?php
 
 	// Content
 	get_template_part( 'views/blog/archive' );
