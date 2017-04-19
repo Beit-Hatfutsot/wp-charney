@@ -28,6 +28,13 @@ get_header(); ?>
 ?>
 
 <?php
+	/**
+	 * Display the subcategories menu
+	 */
+	get_template_part( 'views/components/subcategories-menu' );
+?>
+
+<?php
 
 	// Content
 	get_template_part( 'views/blog/archive' );

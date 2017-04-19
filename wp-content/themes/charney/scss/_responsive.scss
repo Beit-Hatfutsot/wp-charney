@@ -41,7 +41,44 @@
 	}
 }
 
-@media (max-width: 991px) {}
+@media (max-width: 991px) {
+
+	/****************/
+	/* page content */
+	/****************/
+
+	.page-content {
+
+		/***********/
+		/* content */
+		/***********/
+
+		.content-wrapper {
+			.content {
+				.content-section {
+
+					/**********************/
+					/* subcategories menu */
+					/**********************/
+
+					&.subcategories-menu {
+						ul {
+							li {
+								float: none;
+
+								&:first-child {
+									margin-left: 20px;
+									padding: 5px 0 5px 26px;
+									@include image('svgs/bullet.svg', 6px, 0 14px);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 @media (max-width: 767px) {
 

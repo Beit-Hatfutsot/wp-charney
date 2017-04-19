@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<div class="search-submit-wrapper">
 		<?php
 			/**
-			 * Display BH logo
+			 * Display search button
 			 */
 			get_template_part( 'views/svgs/shape', 'search' );
 		?>

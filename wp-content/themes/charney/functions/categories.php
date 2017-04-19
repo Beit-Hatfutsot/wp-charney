@@ -26,7 +26,7 @@ class Charney_Walker_Category extends Walker_Category {
 		parent::start_lvl( $output, $depth, $args );
 
 		// Add "All" sublink
-		$output .= '<li class="cat-item cat-item-all cat-item-all-' . $this->current_cat->term_id . '"><a href="' . esc_url( get_term_link( $this->current_cat ) ) . '">All</a></li>';
+		$output .= '<li class="cat-item cat-item-all cat-item-all-' . $this->current_cat->term_id . '"><a href="' . esc_url( get_term_link( $this->current_cat ) ) . '">' . __( 'All', 'charney' ) . '</a></li>';
 
 	}
 
@@ -49,6 +49,42 @@ class Charney_Walker_Category extends Walker_Category {
 
 		// Store cureent category object to be used later on
 		$this->current_cat = $category;
+
+	}
+
+}
+
+/**
+ * charney_get_category_top_parent
+ *
+ * Recursive function
+ * This function returns the category top parent ID or false in case of no parent found
+ *
+ * @param	$id (int) The category ID
+ * @param	$first_call (bool) Whether this is the first call to this function
+ * @return	(mixed)
+ */
+function charney_get_category_top_parent( $id, $first_call = true ) {
+
+	$category = get_category( $id );
+
+	if ( ! $category )
+		return false;
+
+	if ( $category->category_parent == 0 ) {
+
+		if ( $first_call )
+			// return
+			return false;
+
+		// return
+		return $id;
+
+	}
+	else {
+
+		// return
+		return charney_get_category_top_parent( $category->category_parent, false );
 
 	}
 

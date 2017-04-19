@@ -241,6 +241,48 @@ body {
 					}
 				}
 
+				/**********************/
+				/* subcategories menu */
+				/**********************/
+
+				&.subcategories-menu {
+					padding: 15px 0;
+
+					ul {
+						list-style: none;
+
+						li {
+							float: left;
+							margin-left: 20px;
+							padding: 5px 0 5px 26px;
+							@include image('svgs/bullet.svg', 6px, 0 14px);
+
+							&:first-child {
+								margin-left: 0;
+								padding-left: 0;
+								background: none;
+							}
+
+							a {
+								font-size: 20px;
+								color: $gray-color3;
+								text-decoration: none;
+
+								&:hover {
+									border-bottom: 1px solid $orange-color2;
+								}
+							}
+
+							&.current-cat {
+								a {
+									color: $gray-color1;
+									border-bottom: 1px solid $orange-color2;
+								}
+							}
+						}
+					}
+				}
+
 				/*******/
 				/* bio */
 				/*******/
