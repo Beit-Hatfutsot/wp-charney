@@ -9,24 +9,29 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$args = array(
-	'posts_per_page'	=> -1,
-	'no_found_rows'		=> true
-);
-$posts = new WP_Query($args);
+if ( have_posts() ) : ?>
 
-if ( $posts->have_posts() ) :
+	<div class="masonry">
 
-	while ( $posts->have_posts() ) : $posts->the_post();
-	
-		get_template_part( 'views/blog/loop', 'item' );
-		
-	endwhile;
-	
-else :
+		<?php while ( have_posts() ) : the_post();
 
-	get_template_part( 'views/components/not-found' );
+			get_template_part( 'views/blog/loop', 'item' );
 
-endif;
+		endwhile; ?>
 
-wp_reset_postdata();
+	</div>
+
+<?php else : ?>
+
+	<div class="col-sm-12">
+
+		<?php
+			/**
+			 * Not found
+			 */
+			get_template_part( 'views/components/not-found' );
+		?>
+
+	</div>
+
+<?php endif;

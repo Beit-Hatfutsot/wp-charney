@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! is_category() )
 	return;
 
+/**
+ * Variables
+ */
 $desc = category_description();
 
 if ( ! $desc )

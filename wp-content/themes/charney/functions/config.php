@@ -37,12 +37,6 @@ define( 'JS_DIR',		TEMPLATE . '/js' );
 define( 'WIDGETS_PATH',	THEME_ROOT . '/widgets' );
 
 /**
- * Globals
- */
-global $globals;
-$globals = array();
-
-/**
  * Google Fonts
  */
 $google_fonts = array (

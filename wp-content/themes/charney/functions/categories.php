@@ -1,6 +1,6 @@
 <?php
 /**
- * Categories menu walker
+ * Categories
  *
  * @author		Beit Hatfutsot
  * @package		charney/functions
@@ -47,7 +47,7 @@ class Charney_Walker_Category extends Walker_Category {
 
 		parent::start_el( $output, $category, $depth, $args, $id );
 
-		// Store cureent category object to be used later on
+		// Store current category object to be used later on
 		$this->current_cat = $category;
 
 	}
@@ -89,3 +89,18 @@ function charney_get_category_top_parent( $id, $first_call = true ) {
 	}
 
 }
+
+/**
+ * charney_unlimit_posts_per_archive_page
+ *
+ * This function modifies number of posts to display per archive page to be unlimited
+ *
+ * @param	N/A
+ * @return	N/A
+ */
+function charney_unlimit_posts_per_archive_page() {
+
+	set_query_var( 'posts_per_archive_page', '-1' );
+
+}
+add_filter( 'pre_get_posts', 'charney_unlimit_posts_per_archive_page' );

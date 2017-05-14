@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! is_category() )
 	return;
 
+/**
+ * Variables
+ */
 $category	= get_queried_object();
 $parent		= charney_get_category_top_parent( $category->term_id );
 $id			= $parent ? $parent : $category->term_id;
