@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Leon Charney - Digital Archive 1.0.0\n"
-"POT-Creation-Date: 2017-02-21 13:43+0200\n"
-"PO-Revision-Date: 2017-02-21 13:43+0200\n"
+"POT-Creation-Date: 2017-05-15 12:55+0200\n"
+"PO-Revision-Date: 2017-05-15 12:55+0200\n"
 "Last-Translator: Nir Goldberg <nir@htmline.com>\n"
 "Language-Team: BH online <nirg@bh.org.il>\n"
 "Language: he_IL\n"
@@ -20,12 +20,48 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: scss\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: searchform.php:13
-msgid "Search in site..."
+#: searchform.php:26
+msgid "Search in "
+msgstr ""
+
+#: searchform.php:33
+msgid "Search"
+msgstr ""
+
+#: searchform.php:34
+msgid "Know what you're looking for?"
+msgstr ""
+
+#: searchform.php:35
+msgid "Unsure? you are welcome to search by category using the menu"
+msgstr ""
+
+#: widgets/categories-menu.php:27
+msgid "Charney Categories Menu"
+msgstr ""
+
+#: widgets/categories-menu.php:29
+msgid "Add categories menu."
+msgstr ""
+
+#: widgets/categories-menu.php:146
+msgid "Title"
+msgstr ""
+
+#: widgets/categories-menu.php:149
+msgid "Show Empty Categories"
+msgstr ""
+
+#: widgets/categories-menu.php:150
+msgid "Show \"All\" Sublink for Parent Category"
+msgstr ""
+
+#: views/components/subcategories-menu.php:47 functions/categories.php:29
+msgid "All"
 msgstr ""
 
 #: views/components/not-found.php:16
-msgid "No Records Found"
+msgid "No records found"
 msgstr ""
 
 #: views/components/not-found.php:17
