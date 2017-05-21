@@ -22,7 +22,7 @@ if ( ! in_array( $format, $globals['supported_formats'] ) )
 
 ?>
 
-<div class="masonry-panel" id="masonry-panel-<?php echo $post_id; ?>">
+<div class="masonry-panel masonry-panel-<?php echo $format; ?>" id="masonry-panel-<?php echo $post_id; ?>">
 
 	<div class="masonry-panel__content">
 

@@ -6,10 +6,20 @@ var $ = jQuery,
 		 */
 		params : {
 
-			window_width	: 0,	// client window width - used to maintain window resize events (int)
+			window_width	: 0,	// Client window width - used to maintain window resize events (int)
 			breakpoint		: '',	// CSS media query breakpoint (int)
 			prev_breakpoint	: '',	// Previous media query breakpoint (int)
-			timeout			: 400	// general timeout (int)
+			timeout			: 400,	// General timeout (int)
+
+			// Masonry
+			masonry_classes		: {
+				masonry_container	: 'masonry',
+				masonry_panel		: 'masonry-panel',
+				masonry_item		: 'masonry-panel__content',
+				masonry_pad			: 'masonry-pad'
+			},
+			masonry_heights		: [],
+			masonry_maxHeight	: ''
 
 		},
 
@@ -23,6 +33,7 @@ var $ = jQuery,
 
 			// jQuery extentions
 			$.fn.setAllToMaxHeight = function() {
+				// return
 				return this.height( Math.max.apply(this, $.map(this, function(e) { return $(e).height() })) );
 			}
 
@@ -33,14 +44,14 @@ var $ = jQuery,
 
 			// Embedded video - responsive treatment
 			$('.page-content').find('iframe, object, embed').each(function() {
-				if ( $(this).attr('name') == 'chekout_frame' || $(this).attr('name') == 'pelecard_frame' || $(this).hasClass('no-flex') )
+				if ( $(this).hasClass('no-flex') )
 					return;
 					
 				var src = $(this).attr('src');
 				
 				$(this).wrap("<div class='flex-video'></div>");
 				
-				// add some usefull attributes
+				// Add some usefull attributes
 				if (src.indexOf('youtube.com') >= 0) {
 					src = src.concat('/?showinfo=0&autohide=1&rel=0&wmode=transparent');
 					$(this).attr('src', src);
@@ -62,6 +73,11 @@ var $ = jQuery,
 				// PhotoSwipe
 				Charney_general.initPhotoSwipeFromDOM('.gallery');
 			}
+
+			// Masonry
+			Charney_general.masonry_init();
+			Charney_general.masonry_set_heights();
+			Charney_general.masonry_pads();
 
 		},
 
@@ -98,7 +114,7 @@ var $ = jQuery,
 			var index, j;
 
 			for (index=offset, j=0 ; j<amount && Charney_general.params.gallery_images.length>index ; index++, j++) {
-				// expose photo
+				// Expose photo
 				var photoItem =
 					'<figure class="gallery-item" data-index="' + index + '" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">' +
 						'<a href="' + Charney_general.params.gallery_images[index]['url'] + '" itemprop="contentUrl">' +
@@ -115,10 +131,10 @@ var $ = jQuery,
 			}
 
 			if ( index == Charney_general.params.gallery_images.length ) {
-				// hide more btn
+				// Hide more btn
 				$('.gallery-layout-content .load-more').css('display', 'none');
 			} else {
-				// expose more btn
+				// Expose more btn
 				$('.gallery-layout-content .load-more').css('display', 'block');
 			}
 
@@ -137,7 +153,7 @@ var $ = jQuery,
 		 */
 		initPhotoSwipeFromDOM : function(gallerySelector) {
 
-			// parse slide data (url, title, size ...) from DOM elements
+			// Parse slide data (url, title, size ...) from DOM elements
 			// (children of gallerySelector)
 			var parseThumbnailElements = function(el) {
 				var galleryCols = el.children('.gallery-col'),
@@ -152,7 +168,7 @@ var $ = jQuery,
 							caption = $(this).children('figcaption'),
 							img = link.children('img');
 
-						// create slide object
+						// Create slide object
 						var item = {
 							src: link.attr('href'),
 							w: img[0].naturalWidth,
@@ -164,38 +180,40 @@ var $ = jQuery,
 							item.title = caption.html();
 						}
 
-						item.el = $(this)[0]; // save link to element for getThumbBoundsFn
+						item.el = $(this)[0];	// Save link to element for getThumbBoundsFn
 
 						items[index] = item;
 					});
 				});
 
+				// return
 				return items;
 			};
 
-			// triggers when user clicks on thumbnail
+			// Triggers when user clicks on thumbnail
 			var onThumbnailsClick = function(e) {
 				e = e || window.event;
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
 				var eTarget = e.target || e.srcElement;
 
-				// find root element of slide
+				// Find root element of slide
 				var clickedListItem = $(eTarget).parent().parent();
 
 				if(!clickedListItem) {
 					return;
 				}
 
-				// find index of clicked item
+				// Find index of clicked item
 				var clickedGallery = clickedListItem.parent().parent(),
 					index = clickedListItem.attr('data-index');
 
 				if(clickedGallery && index >= 0) {
-					// open PhotoSwipe if valid index found
+					// Open PhotoSwipe if valid index found
 					openPhotoSwipe( index, clickedGallery );
 				}
 
+				// return
 				return false;
 			};
 
@@ -207,18 +225,19 @@ var $ = jQuery,
 
 				items = parseThumbnailElements(galleryElement);
 
-				// define options (if needed)
+				// Define options (if needed)
 				options = {
 
-					// define gallery index (for URL)
+					// Define gallery index (for URL)
 					galleryUID: galleryElement.attr('data-pswp-uid'),
 
 					getThumbBoundsFn: function(index) {
 						// See Options -> getThumbBoundsFn section of documentation for more info
-						var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+						var thumbnail = items[index].el.getElementsByTagName('img')[0],		// Find thumbnail
 						pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
 						rect = thumbnail.getBoundingClientRect(); 
 
+						// return
 						return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
 					},
 
@@ -226,7 +245,7 @@ var $ = jQuery,
 
 				};
 
-				// exit if index not found
+				// Exit if index not found
 				if( isNaN(options.index) ) {
 					return;
 				}
@@ -236,13 +255,110 @@ var $ = jQuery,
 				gallery.init();
 			};
 
-			// loop through all gallery elements and bind events
+			// Loop through all gallery elements and bind events
 			var galleryElements = document.querySelectorAll( gallerySelector );
 
 			for(var i = 0, l = galleryElements.length; i < l; i++) {
 				galleryElements[i].setAttribute('data-pswp-uid', i+1);
 				galleryElements[i].onclick = onThumbnailsClick;
 			}
+
+		},
+
+		/**
+		 * masonry_init
+		 *
+		 * Initialize masonry grid
+		 *
+		 * @param	N/A
+		 * @return	N/A
+		 */
+		masonry_init : function() {
+
+			// Params
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
+			var pads		= $('.' + Charney_general.params.masonry_classes.masonry_pad);
+
+			// Remove pads
+			if (pads.length) {
+				pads.remove();
+			}
+
+			// Remove container style (height)
+			container.removeAttr('style');
+
+		},
+
+		/**
+		 * masonry_set_heights
+		 *
+		 * Set masonry container and panels heights
+		 *
+		 * @param	N/A
+		 * @return	N/A
+		 */
+		masonry_set_heights : function() {
+
+			// Params
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
+			var panels		= $('.' + Charney_general.params.masonry_classes.masonry_panel);
+
+			// Initiate masonry_heights
+			var heights = [];
+
+			if (panels.length) {
+				panels.each(function() {
+					// Update panel height
+					$(this).css('height', $(this).children().outerHeight());
+
+					// Update masonry_heights
+					order = $(this).css('order');
+					if (!heights[order - 1]) {
+						heights[order - 1] = 0;
+					}
+					heights[order - 1] += $(this).outerHeight();
+				});
+			}
+
+			Charney_general.params.masonry_heights = heights;
+
+			// Update container height
+			Charney_general.params.masonry_maxHeight = Math.max.apply(Math, heights);
+			container.css('height', Charney_general.params.masonry_maxHeight);
+
+		},
+
+		/**
+		 * masonry_pads
+		 *
+		 * Fill container with pads elements
+		 *
+		 * @param	N/A
+		 * @return	N/A
+		 */
+		masonry_pads : function() {
+
+			// Params
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
+			var heights		= Charney_general.params.masonry_heights;
+			var maxHeight	= Charney_general.params.masonry_maxHeight;
+			var pad_class	= Charney_general.params.masonry_classes.masonry_pad;
+
+			$.map(heights, function (height, idx) {
+				if (height < maxHeight && height > 0) {
+					var pad = $('<div>', {class: pad_class});
+					pad.css({
+						'height'					: maxHeight - height + 'px',
+						'-webkit-box-ordinal-group'	: idx + 1,
+						'-moz-box-ordinal-group'	: idx + 1,
+						'-ms-flex-order'			: idx + 1,
+						'-webkit-order'				: idx + 1,
+						'order'						: idx + 1
+					});
+
+					container.append(pad);
+				}
+			});
 
 		},
 
@@ -298,14 +414,19 @@ var $ = jQuery,
 		 */
 		alignments : function() {
 
-			// set window breakpoint values
+			// Masonry
+			Charney_general.masonry_init();
+			Charney_general.masonry_set_heights();
+			Charney_general.masonry_pads();
+
+			// Set window breakpoint values
 			Charney_general.breakpoint_refreshValue();
 
 		}
 
 	};
 
-// make it safe to use console.log always
+// Make it safe to use console.log always
 (function(a){function b(){}for(var c="assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(","),d;!!(d=c.pop());){a[d]=a[d]||b;}})
 (function(){try{console.log();return window.console;}catch(a){return (window.console={});}}());
 

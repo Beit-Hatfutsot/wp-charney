@@ -14,4 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 $pdf	= get_field( 'acf-post-attributes_pdf' );
 
+if ( ! $pdf )
+	return;
+
 ?>

@@ -14,4 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 $url	= get_field( 'acf-post-attributes_audio_url' );
 
+if ( ! $url )
+	return;
+
 ?>

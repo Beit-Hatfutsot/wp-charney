@@ -15,4 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $url	= get_field( 'acf-post-attributes_video_url' );
 $cover	= get_field( 'acf-post-attributes_video_cover_image' );
 
+if ( ! $url )
+	return;
+
 ?>
+
+<iframe src="<?php echo $url; ?>"></iframe>

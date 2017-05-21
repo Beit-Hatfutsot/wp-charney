@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if ( have_posts() ) : ?>
 
-	<div class="masonry">
+	<div class="masonry col-sm-12">
 
 		<?php while ( have_posts() ) : the_post();
 
