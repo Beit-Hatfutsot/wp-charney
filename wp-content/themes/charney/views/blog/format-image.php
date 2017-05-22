@@ -19,4 +19,4 @@ if ( ! $image )
 
 ?>
 
-<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+<img src="<?php echo $image['sizes']['medium']; ?>" width="<?php echo $image['sizes']['medium-width']; ?>" height="<?php echo $image['sizes']['medium-height']; ?>" alt="<?php echo $image['alt']; ?>" />

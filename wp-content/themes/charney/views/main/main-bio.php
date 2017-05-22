@@ -39,7 +39,7 @@ if ( function_exists('get_field') ) {
 			/**
 			 * Bio image
 			 */
-			echo $image ? '<img src="' . $image['url'] . '" width="' . $image['sizes']['large-width'] . '" height="' . $image['sizes']['large-height'] . '" alt="' . $image['alt'] . '">' : '';
+			echo $image ? '<img src="' . $image['sizes']['medium'] . '" width="' . $image['sizes']['medium-width'] . '" height="' . $image['sizes']['medium-height'] . '" alt="' . $image['alt'] . '" />' : '';
 		?>
 
 	</div>

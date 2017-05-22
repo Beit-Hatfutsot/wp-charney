@@ -7,7 +7,7 @@
             "label": "Video URL",
             "name": "acf-post-attributes_video_url",
             "type": "url",
-            "instructions": "",
+            "instructions": "Google Drive Embedded iframe Source",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -16,14 +16,14 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "http:\/\/"
+            "placeholder": "https:\/\/drive.google.com\/"
         },
         {
             "key": "field_58f75c18876a2",
             "label": "Cover Image",
             "name": "acf-post-attributes_video_cover_image",
             "type": "image",
-            "instructions": "Image Dimensions (px): 450x250",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -67,5 +67,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1492606198
+    "modified": 1495452865
 }
