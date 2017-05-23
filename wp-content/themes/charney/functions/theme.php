@@ -113,7 +113,26 @@ $globals = array(
 
 	'page_template'		=> '',
 	'timeline_source'	=> '',
-	'supported_formats'	=> array( 'image', 'video', 'audio', 'link' )
+	'supported_formats'	=> array(
+
+		'image'			=> array(
+			'name'			=> 'Photos',
+			'singular_name'	=> 'Photo'
+		),
+		'video'			=> array(
+			'name'			=> 'Videos',
+			'singular_name'	=> 'Video'
+		),
+		'audio'			=> array(
+			'name'			=> 'Audios',
+			'singular_name'	=> 'Audio'
+		),
+		'link'			=> array(
+			'name'			=> 'Documents',
+			'singular_name'	=> 'Document'
+		)
+
+	)
 
 );
 
@@ -123,7 +142,7 @@ $globals = array(
 add_theme_support( 'title-tag' );
 add_theme_support( 'menus' );
 //add_theme_support( 'post-thumbnails' );
-add_theme_support( 'post-formats', $globals['supported_formats'] );
+add_theme_support( 'post-formats', array_keys( $globals['supported_formats'] ) );
 
 /**
  * Remove WordPress defaults

@@ -1,6 +1,6 @@
 <?php
 /**
- * Categories Menu widget
+ * Formats Filter widget
  *
  * @author		Beit Hatfutsot
  * @package		charney/widgets
@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Charney_Categories_Menu_Widget extends WP_Widget {
+class Charney_Formats_Filter_Widget extends WP_Widget {
 
 	var $form_fields;
 
@@ -23,10 +23,10 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 	 */
 	function __construct() {
 
-		$this->widget_id			= 'Charney_Categories_Menu_Widget';
-		$this->widget_name			= __( 'Charney Categories Menu', 'charney' );
-		$this->widget_cssclass		= 'charney-categories-menu-widget';
-		$this->widget_description	= __( 'Add categories menu.', 'charney' );
+		$this->widget_id			= 'Charney_Formats_Filter_Widget';
+		$this->widget_name			= __( 'Charney Formats Filter', 'charney' );
+		$this->widget_cssclass		= 'charney-formats-filter-widget';
+		$this->widget_description	= __( 'Add posts formats filter.', 'charney' );
 
 		$widget_ops = array(
 			'classname'		=> $this->widget_cssclass,
@@ -37,9 +37,7 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 
 		// form fields
 		$this->form_fields = array(
-			'title'			=> '',	// Widget title
-			'show_empty'	=> '',	// Show empty categories
-			'show_all'		=> ''	// Show "All" sublink for parent category
+			'title'			=> ''	// Widget title
 		);
 
 	}
@@ -55,8 +53,6 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		$this->form_fields['title']			= isset( $instance['title'] )		? $instance['title']		: '';
-		$this->form_fields['show_empty']	= isset( $instance['show_empty'] )	? $instance['show_empty']	: '';
-		$this->form_fields['show_all']		= isset( $instance['show_all'] )	? $instance['show_all']		: '';
 
 		$this->generate_widget_form();
 
@@ -76,8 +72,6 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 		$instance = $old_instance;
 
 		$instance['title']		= $new_instance['title'];
-		$instance['show_empty']	= $new_instance['show_empty'];
-		$instance['show_all']	= $new_instance['show_all'];
 
 		// return
 		return $instance;
@@ -97,6 +91,17 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 
 		extract($args, EXTR_SKIP);
 
+		// Check if is category archive page
+		if ( ! is_category() )
+			return;
+
+		// Get supported formats
+		global $globals;
+		$formats = $globals['supported_formats'];
+
+		if ( ! $formats )
+			return;
+
 		// Widget content
 		echo $before_widget;
 
@@ -105,7 +110,7 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 			echo $before_title . $title . $after_title;
 		}
 
-		echo $this->get_categories_menu( $instance['show_empty'], $instance['show_all'] );
+		echo $this->get_formats_filter( $formats );
 
 		echo $after_widget;
 
@@ -114,7 +119,7 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 	/**
 	 * get_form_field
 	 *
-	 * This function returns a value from the form_fields array found in Charney_Categories_Menu_Widget object
+	 * This function returns a value from the form_fields array found in Charney_Formats_Filter_Widget object
 	 *
 	 * @param	$name (string) The form field name to return
 	 * @return	(mixed)
@@ -139,50 +144,37 @@ class Charney_Categories_Menu_Widget extends WP_Widget {
 	private function generate_widget_form() {
 
 		$title		= $this->get_form_field( 'title' );
-		$show_empty	= $this->get_form_field( 'show_empty' );
-		$show_all	= $this->get_form_field( 'show_all' );
 
 		?>
 
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title', 'charney' ); ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $this->form_fields['title'] ); ?>" /></label></p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('show_empty'); ?>"><input id="<?php echo $this->get_field_id('show_empty'); ?>" name="<?php echo $this->get_field_name('show_empty'); ?>" type="checkbox" <?php echo esc_attr($show_empty) ? 'checked' : ''; ?> /><?php _e( 'Show Empty Categories', 'charney' ); ?></label><br />
-			<label for="<?php echo $this->get_field_id('show_all'); ?>"><input id="<?php echo $this->get_field_id('show_all'); ?>" name="<?php echo $this->get_field_name('show_all'); ?>" type="checkbox" <?php echo esc_attr($show_all) ? 'checked' : ''; ?> /><?php _e( 'Show "All" Sublink for Parent Category', 'charney' ); ?></label>
-		</p>
 
 		<?php
 
 	}
 
 	/**
-	 * get_categories_menu
+	 * get_formats_filter
 	 *
-	 * This function returns the catgories menu HTML code
+	 * This function returns the posts formats filter HTML code
 	 *
-	 * @param	$show_empty (string)
-	 * @param	$show_all (string)
+	 * @param	$formats (array)
 	 * @return	(string)
 	 */
-	private function get_categories_menu( $show_empty, $show_all ) {
+	private function get_formats_filter( $formats ) {
+
+		if ( ! $formats )
+			return;
 
 		$output = '';
 
-		$args = array(
-			'echo'			=> 0,
-			'hide_empty'	=> $show_empty ? 0 : 1,
-			'title_li'		=> ''
-		);
+		$output .= '<ul>';
 
-		if ( $show_all ) {
-			// Show "All" sublink for parent category, using a custom walker category
-			$args['walker'] = new Charney_Walker_Category();
+		foreach ($formats as $f => $labels) {
+			$output .= '<li class="filter filter-' . $f . '">' . $labels['name'] . '</li>';
 		}
 
-		$list = wp_list_categories( $args );
-
-		if ( $list )
-			$output = '<ul>' . $list . '</ul>';
+		$output .= '</ul>';
 
 		// return
 		return $output;

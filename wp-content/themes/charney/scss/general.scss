@@ -78,46 +78,78 @@ body {
 						font-size: 18px;
 					}
 
-					ul {
-						list-style: none;
+					/**************************************/
+					/* main menu & categories menu widget */
+					/**************************************/
 
-						li {
-							a {
+					&.widget_nav_menu,
+					&.charney-categories-menu-widget {
+						ul {
+							list-style: none;
+
+							li {
+								a {
+									font-size: 16px;
+									font-weight: $font-light;
+									color: $gray-color1;
+									text-decoration: none;
+
+									&:hover {
+										border-bottom: 1px solid $orange-color2;
+									}
+								}
+
+								&.main {
+									a {
+										font-size: 22px;
+										color: $black;
+									}
+								}
+
+								&.current_page_item > a,
+								&.current-cat > a {
+									border-bottom: 1px solid $orange-color2;
+								}
+
+								.children {
+									margin-bottom: 5px;
+									padding-left: 30px;
+									list-style: circle;
+
+									li {
+										margin-bottom: -5px;
+										color: $gray-color3;
+
+										a {
+											font-size: 14px;
+											color: $gray-color3;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					/*************************/
+					/* formats filter widget */
+					/*************************/
+
+					&.charney-formats-filter-widget {
+						ul {
+							list-style: none;
+
+							li {
+								margin-left: 10px;
+								padding: 0 0 0 20px;
 								font-size: 16px;
 								font-weight: $font-light;
 								color: $gray-color1;
-								text-decoration: none;
+								@include image('svgs/list-item.svg', 10px, 0 7px);
+								cursor: pointer;
 
-								&:hover {
-									border-bottom: 1px solid $orange-color2;
-								}
-							}
-
-							&.main {
-								a {
-									font-size: 22px;
-									color: $black;
-								}
-							}
-
-							&.current_page_item > a,
-							&.current-cat > a {
-								border-bottom: 1px solid $orange-color2;
-							}
-
-							.children {
-								margin-bottom: 5px;
-								padding-left: 30px;
-								list-style: circle;
-
-								li {
-									margin-bottom: -5px;
-									color: $gray-color3;
-
-									a {
-										font-size: 14px;
-										color: $gray-color3;
-									}
+								&:hover,
+								&.active {
+									@include image('svgs/list-item-active.svg', 10px, 0 7px);
 								}
 							}
 						}

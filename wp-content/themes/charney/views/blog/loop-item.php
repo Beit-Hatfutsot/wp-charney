@@ -17,7 +17,7 @@ global $globals;
 $post_id	= get_the_id();
 $format		= get_post_format( $post_id );
 
-if ( ! in_array( $format, $globals['supported_formats'] ) )
+if ( ! in_array( $format, array_keys( $globals['supported_formats'] ) ) )
 	return;
 
 ?>

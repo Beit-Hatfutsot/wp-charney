@@ -18,6 +18,14 @@ var $ = jQuery,
 				masonry_item		: 'masonry-panel__content',
 				masonry_pad			: 'masonry-pad'
 			},
+			masonry_cols		: {
+				'width-1200'	: 3,
+				'width-1199'	: 3,
+				'width-991'		: 2,
+				'width-767'		: 3,
+				'width-650'		: 2,
+				'width-480'		: 1
+			},
 			masonry_heights		: [],
 			masonry_maxHeight	: ''
 
@@ -78,6 +86,11 @@ var $ = jQuery,
 			Charney_general.masonry_init();
 			Charney_general.masonry_set_heights();
 			Charney_general.masonry_pads();
+
+			// Masonry filter - bind click event to formats filter
+			$('.filter').bind('click', function() {
+				Charney_general.masonry_filter($(this).attr('class').split(' ')[1].substring(7));
+			});
 
 		},
 
@@ -308,6 +321,9 @@ var $ = jQuery,
 
 			if (panels.length) {
 				panels.each(function() {
+					if ($(this).hasClass('hidden'))
+						return true;
+
 					// Update panel height
 					$(this).css('height', $(this).children().outerHeight());
 
@@ -363,6 +379,108 @@ var $ = jQuery,
 		},
 
 		/**
+		 * masonry_filter
+		 *
+		 * Filter items according to a given format
+		 *
+		 * @param	format (string)
+		 * @return	N/A
+		 */
+		masonry_filter : function(format) {
+
+			if (!format)
+				return;
+
+			// Params
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
+
+			// Mark filter item as active
+			$('.filter').removeClass('active');
+			$('.filter-' + format).addClass('active');
+
+			// Mark container as filtered
+			container.addClass('filtered');
+
+			// Initialize masonry grid
+			Charney_general.masonry_init();
+
+			// Hide all different format items
+			Charney_general.masonry_hide_unfiltered(format);
+
+			// Reorder filtered format items
+			Charney_general.masonry_reorder(format);
+
+			// Set masonry container and panels heights
+			Charney_general.masonry_set_heights();
+
+			// Fill container with pads elements
+			Charney_general.masonry_pads();
+
+		},
+
+		/**
+		 * masonry_hide_unfiltered
+		 *
+		 * Hide all different format items
+		 *
+		 * @param	format (string)
+		 * @return	N/A
+		 */
+		masonry_hide_unfiltered : function(format) {
+
+			if (!format)
+				return;
+
+			// Params
+			var panels			= $('.' + Charney_general.params.masonry_classes.masonry_panel);
+			var format_panels	= $('.' + Charney_general.params.masonry_classes.masonry_panel + '-' + format);
+
+			// Hide all panels
+			panels.addClass('hidden');
+
+			// Expose all format panels
+			format_panels.removeClass('hidden');
+
+		},
+
+		/**
+		 * masonry_reorder
+		 *
+		 * Reorder filtered format items
+		 *
+		 * @param	format (string)
+		 * @return	N/A
+		 */
+		masonry_reorder : function(format) {
+
+			if (!format)
+				return;
+
+			// Params
+			var format_panels	= $('.' + Charney_general.params.masonry_classes.masonry_panel + '-' + format);
+			var breakpoint		= Charney_general.params.breakpoint;
+			cols				= Charney_general.params.masonry_cols['width-' + breakpoint];
+			order_idx			= 0;
+
+			if (format_panels.length) {
+				format_panels.each(function() {
+					var order = (order_idx + 1) % cols === 0 ? cols : (order_idx + 1);
+
+					$(this).css({
+						'-webkit-box-ordinal-group'	: order,
+						'-moz-box-ordinal-group'	: order,
+						'-ms-flex-order'			: order,
+						'-webkit-order'				: order,
+						'order'						: order
+					});
+
+					order_idx++;
+				});
+			}
+
+		},
+
+		/**
 		 * breakpoint_refreshValue
 		 *
 		 * Set window breakpoint values
@@ -414,13 +532,30 @@ var $ = jQuery,
 		 */
 		alignments : function() {
 
-			// Masonry
-			Charney_general.masonry_init();
-			Charney_general.masonry_set_heights();
-			Charney_general.masonry_pads();
+			// Params
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
 
 			// Set window breakpoint values
 			Charney_general.breakpoint_refreshValue();
+
+			// Masonry
+			if (container.hasClass('filtered')) {
+				format = '';
+
+				// Get the current filtered format
+				$('.filter').each(function() {
+					if ($(this).hasClass('active')) {
+						format = $(this).attr('class').split(' ')[1].substring(7);
+					}
+				});
+
+				Charney_general.masonry_filter(format);
+			}
+			else {
+				Charney_general.masonry_init();
+				Charney_general.masonry_set_heights();
+				Charney_general.masonry_pads();
+			}
 
 		}
 

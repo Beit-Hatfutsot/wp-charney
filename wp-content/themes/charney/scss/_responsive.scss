@@ -23,6 +23,12 @@
 	}
 }
 
+@media (max-width: 650px) {
+	body:before {
+		content: "650";
+	}
+}
+
 @media (max-width: 480px) {
 	body:before {
 		content: "480";
