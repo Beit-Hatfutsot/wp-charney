@@ -143,7 +143,7 @@ acf_add_local_field_group(array (
 			'label' => 'Source',
 			'name' => 'acf-main_timeline_source',
 			'type' => 'url',
-			'instructions' => 'Google spreadsheet Link',
+			'instructions' => 'Google Spreadsheet Link',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -240,7 +240,7 @@ acf_add_local_field_group(array (
 			'label' => 'Video URL',
 			'name' => 'acf-post-attributes_video_url',
 			'type' => 'url',
-			'instructions' => '',
+			'instructions' => 'Google Drive Embedded iframe Source',
 			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -249,14 +249,14 @@ acf_add_local_field_group(array (
 				'id' => '',
 			),
 			'default_value' => '',
-			'placeholder' => 'http://',
+			'placeholder' => 'https://drive.google.com/',
 		),
 		array (
 			'key' => 'field_58f75c18876a2',
 			'label' => 'Cover Image',
 			'name' => 'acf-post-attributes_video_cover_image',
 			'type' => 'image',
-			'instructions' => 'Image Dimensions (px): 450x250',
+			'instructions' => '',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -311,7 +311,7 @@ acf_add_local_field_group(array (
 			'label' => 'Audio URL',
 			'name' => 'acf-post-attributes_audio_url',
 			'type' => 'url',
-			'instructions' => '',
+			'instructions' => 'Google Drive Embedded iframe Source',
 			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -320,7 +320,7 @@ acf_add_local_field_group(array (
 				'id' => '',
 			),
 			'default_value' => '',
-			'placeholder' => 'http://',
+			'placeholder' => 'https://drive.google.com/',
 		),
 	),
 	'location' => array (
