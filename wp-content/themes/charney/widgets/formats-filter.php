@@ -37,7 +37,8 @@ class Charney_Formats_Filter_Widget extends WP_Widget {
 
 		// form fields
 		$this->form_fields = array(
-			'title'			=> ''	// Widget title
+			'title'			=> '',	// Widget title
+			'clear_btn'		=> ''	// Show "Clear" button
 		);
 
 	}
@@ -53,6 +54,7 @@ class Charney_Formats_Filter_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		$this->form_fields['title']			= isset( $instance['title'] )		? $instance['title']		: '';
+		$this->form_fields['clear_btn']		= isset( $instance['clear_btn'] )	? $instance['clear_btn']	: '';
 
 		$this->generate_widget_form();
 
@@ -72,6 +74,7 @@ class Charney_Formats_Filter_Widget extends WP_Widget {
 		$instance = $old_instance;
 
 		$instance['title']		= $new_instance['title'];
+		$instance['clear_btn']	= $new_instance['clear_btn'];
 
 		// return
 		return $instance;
@@ -105,7 +108,13 @@ class Charney_Formats_Filter_Widget extends WP_Widget {
 		// Widget content
 		echo $before_widget;
 
+		$title = '';
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance);
+
+		if ( $instance['clear_btn'] ) {
+			$title .= '<sapn class="clear-filter">(' . __( 'Clear', 'charney' ) . ')</span>';
+		}
+
 		if ( ! empty($title) ) {
 			echo $before_title . $title . $after_title;
 		}
@@ -144,10 +153,15 @@ class Charney_Formats_Filter_Widget extends WP_Widget {
 	private function generate_widget_form() {
 
 		$title		= $this->get_form_field( 'title' );
+		$clear_btn	= $this->get_form_field( 'clear_btn' );
 
 		?>
 
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title', 'charney' ); ?>: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $this->form_fields['title'] ); ?>" /></label></p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id('clear_btn'); ?>"><input id="<?php echo $this->get_field_id('clear_btn'); ?>" name="<?php echo $this->get_field_name('clear_btn'); ?>" type="checkbox" <?php echo esc_attr($clear_btn) ? 'checked' : ''; ?> /><?php _e( 'Show "Clear" button', 'charney' ); ?></label>
+		</p>
 
 		<?php
 

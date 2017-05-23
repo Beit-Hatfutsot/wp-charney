@@ -135,6 +135,14 @@ body {
 					/*************************/
 
 					&.charney-formats-filter-widget {
+						.clear-filter {
+							margin-left: 10px;
+							font-size: 12px;
+							color: $gray-color3;
+							text-decoration: underline;
+							cursor: pointer;
+						}
+
 						ul {
 							list-style: none;
 
