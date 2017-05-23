@@ -21,17 +21,15 @@ if ( have_posts() ) : ?>
 
 	</div>
 
-<?php else : ?>
+<?php endif; ?>
 
-	<div class="col-sm-12">
+<div class="not-found-wrapper col-sm-12">
 
-		<?php
-			/**
-			 * Not found
-			 */
-			get_template_part( 'views/components/not-found' );
-		?>
+	<?php
+		/**
+		 * Not found
+		 */
+		get_template_part( 'views/components/not-found' );
+	?>
 
-	</div>
-
-<?php endif;
+</div>

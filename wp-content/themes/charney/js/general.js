@@ -324,6 +324,12 @@ var $ = jQuery,
 			// Remove container style (height)
 			container.removeAttr('style');
 
+			// Hide "Not found" message
+			container.next('.not-found-wrapper').hide();
+
+			// Show archive items grid
+			$('.archive-items').show();
+
 		},
 
 		/**
@@ -366,6 +372,11 @@ var $ = jQuery,
 			// Update container height
 			Charney_general.params.masonry_maxHeight = Math.max.apply(Math, heights);
 			container.css('height', Charney_general.params.masonry_maxHeight);
+
+			if (!heights.length) {
+				// Show "Not found" message
+				container.next('.not-found-wrapper').show();
+			}
 
 		},
 
