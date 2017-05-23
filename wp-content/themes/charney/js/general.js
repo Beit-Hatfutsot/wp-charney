@@ -380,26 +380,62 @@ var $ = jQuery,
 		masonry_pads : function() {
 
 			// Params
-			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
+			var breakpoint	= Charney_general.params.breakpoint;
+			var cols		= Charney_general.params.masonry_cols['width-' + breakpoint];
 			var heights		= Charney_general.params.masonry_heights;
+			var maxHeight	= Charney_general.params.masonry_maxHeight;
+
+			// Create pads for filled columns
+			$.map(heights, function (height, idx) {
+				if (height < maxHeight && height > 0) {
+					Charney_general.masonry_create_pad(height, cols, idx + 1);
+				}
+			});
+
+			// Create pads for empty columns
+			for (var i = heights.length ; i < cols ; i++) {
+				Charney_general.masonry_create_pad(0, cols, i + 1);
+			}
+
+		},
+
+		/**
+		 * masonry_create_pad
+		 *
+		 * Create and append pad element
+		 *
+		 * @param	height (int) current col filled height
+		 * @param	cols (int) number of cols in grid - used only for empty column
+		 * @param	order (int) required pad order
+		 * @return	N/A
+		 */
+		masonry_create_pad : function(height, cols, order) {
+
+			// Params
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
 			var maxHeight	= Charney_general.params.masonry_maxHeight;
 			var pad_class	= Charney_general.params.masonry_classes.masonry_pad;
 
-			$.map(heights, function (height, idx) {
-				if (height < maxHeight && height > 0) {
-					var pad = $('<div>', {class: pad_class});
-					pad.css({
-						'height'					: maxHeight - height + 'px',
-						'-webkit-box-ordinal-group'	: idx + 1,
-						'-moz-box-ordinal-group'	: idx + 1,
-						'-ms-flex-order'			: idx + 1,
-						'-webkit-order'				: idx + 1,
-						'order'						: idx + 1
-					});
+			if (typeof height === "undefined" || height === null) {
+				height = 0;
+			}
 
-					container.append(pad);
-				}
+			var pad = $('<div>', {class: pad_class});
+
+			if (height === 0) {
+				pad.css('width', 100 / cols + '%')
+			}
+
+			pad.css({
+				'height'					: maxHeight - height + 'px',
+				'-webkit-box-ordinal-group'	: order,
+				'-moz-box-ordinal-group'	: order,
+				'-ms-flex-order'			: order,
+				'-webkit-order'				: order,
+				'order'						: order
 			});
+
+			container.append(pad);
 
 		},
 
