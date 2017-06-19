@@ -463,6 +463,45 @@ body {
 							.masonry-panel__content {
 								padding: 10px;
 								@include flex-align-items(center);
+
+								.blog-item {
+									figure {
+										position: relative;
+										overflow: hidden;
+										cursor: pointer;
+
+										figcaption {
+											position: absolute;
+											padding: 5px;
+											bottom: -50%;
+											width: 100%;
+											font-size: 16px;
+											font-weight: $font-semi-bold;
+											color: $white;
+											overflow: hidden;
+											text-overflow: ellipsis;
+											display: -webkit-box;
+											-webkit-box-orient: vertical;
+											-webkit-line-clamp: 3;
+											background: rgba(0,0,0,0.7);
+											@include transition(bottom);
+										}
+
+										.icon-play {
+											position: absolute;
+											@include calc('top', "50% - 25px");
+											@include calc('left', "50% - 25px");
+											width: 50px;
+											height: 50px;
+										}
+
+										&:hover {
+											figcaption {
+												bottom: 0;
+											}
+										}
+									}
+								}
 							}
 						}
 					}
