@@ -355,10 +355,10 @@ acf_add_local_field_group(array (
 	'fields' => array (
 		array (
 			'key' => 'field_58f5f6db5834b',
-			'label' => 'PDF',
-			'name' => 'acf-post-attributes_pdf',
-			'type' => 'file',
-			'instructions' => '',
+			'label' => 'PDF URL',
+			'name' => 'acf-post-attributes_pdf_url',
+			'type' => 'url',
+			'instructions' => 'Google Drive Embedded iframe Source',
 			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -366,11 +366,8 @@ acf_add_local_field_group(array (
 				'class' => '',
 				'id' => '',
 			),
-			'return_format' => 'url',
-			'library' => 'all',
-			'min_size' => '',
-			'max_size' => '',
-			'mime_types' => 'pdf',
+			'default_value' => '',
+			'placeholder' => 'https://drive.google.com/',
 		),
 	),
 	'location' => array (
