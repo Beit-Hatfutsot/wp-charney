@@ -281,15 +281,6 @@ var $ = jQuery,
 		 */
 		masonry : function() {
 
-			// Initialize masonry grid
-			Charney_general.masonry_init();
-
-			// Set masonry container and panels heights
-			Charney_general.masonry_set_heights();
-
-			// Fill container with pads elements
-			Charney_general.masonry_pads();
-
 			// Bind click event to formats filter
 			$('.filter').bind('click', function() {
 				Charney_general.masonry_filter($(this).attr('class').split(' ')[1].substring(7));
@@ -676,8 +667,13 @@ var $ = jQuery,
 				Charney_general.masonry_filter(format);
 			}
 			else {
+				// Initialize masonry grid
 				Charney_general.masonry_init();
+
+				// Set masonry container and panels heights
 				Charney_general.masonry_set_heights();
+
+				// Fill container with pads elements
 				Charney_general.masonry_pads();
 			}
 
