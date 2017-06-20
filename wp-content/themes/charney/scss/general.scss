@@ -465,10 +465,15 @@ body {
 								@include flex-align-items(center);
 
 								.blog-item {
+									cursor: pointer;
+
+									/*****************/
+									/* image / video */
+									/*****************/
+
 									figure {
 										position: relative;
 										overflow: hidden;
-										cursor: pointer;
 
 										figcaption {
 											position: absolute;

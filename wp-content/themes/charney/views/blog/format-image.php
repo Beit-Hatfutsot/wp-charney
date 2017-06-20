@@ -19,4 +19,13 @@ if ( ! $image )
 
 ?>
 
-<img src="<?php echo $image['sizes']['medium']; ?>" width="<?php echo $image['sizes']['medium-width']; ?>" height="<?php echo $image['sizes']['medium-height']; ?>" alt="<?php echo $image['alt']; ?>" />
+<div class="blog-item blog-item-image">
+
+	<figure>
+		<img src="<?php echo $image['sizes']['medium']; ?>" width="<?php echo $image['sizes']['medium-width']; ?>" height="<?php echo $image['sizes']['medium-height']; ?>" alt="<?php the_title(); ?>" />
+		<figcaption>
+			<?php the_title(); ?>
+		</figcaption>
+	</figure>
+
+</div>
