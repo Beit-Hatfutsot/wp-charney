@@ -12,9 +12,23 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Variables
  */
-$pdf	= get_field( 'acf-post-attributes_pdf' );
+$url	= get_field( 'acf-post-attributes_pdf_url' );
 
-if ( ! $pdf )
+if ( ! $url )
 	return;
 
 ?>
+
+<div class="blog-item blog-item-link">
+
+	<div class="icon icon-pdf">
+		<?php get_template_part( 'views/svgs/shape', 'pdf' ); ?>
+	</div>
+
+	<div class="item-title">
+		<?php the_title(); ?>
+	</div>
+
+	<div class="clearfix"></div>
+
+</div>
