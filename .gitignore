@@ -7,4 +7,5 @@ wp-content/themes/charney/css/*.css
 wp-content/themes/charney/css/*.map
 wp-content/themes/charney/js/min/
 wp-content/themes/charney/images/general/svg-defs.svg
+wp-content/themes/charney/api/charney-drive-api-credentials.json
 wp-content/uploads/
