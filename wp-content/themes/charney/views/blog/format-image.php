@@ -12,7 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Variables
  */
-$image	= get_field( 'acf-post-attributes_image' );
+if ( function_exists('get_field') ) {
+	$image	= get_field( 'acf-post-attributes_image' );
+}
 
 if ( ! $image )
 	return;

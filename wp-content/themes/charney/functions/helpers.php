@@ -32,3 +32,22 @@ function charney_maybe_get( $array, $key, $default = null ) {
 	return $array[ $key ];
 
 }
+
+/**
+ * charney_milliseconds_to_time
+ *
+ * This function converts milliseconds to time format
+ *
+ * @param	$milliseconds (int)
+ * @return	(string)
+ */
+function charney_milliseconds_to_time( $milliseconds ) {
+
+	$seconds 	= intval( (int)$milliseconds / 1000 );
+	$minutes 	= intval( (int)$seconds / 60 );
+	$hours		= intval( (int)$minutes / 60 );
+
+	// return
+	return sprintf( '%02d:%02d:%02d', $hours, $minutes%60, $seconds%60 );
+
+}

@@ -12,7 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Variables
  */
-$url	= get_field( 'acf-post-attributes_audio_url' );
+if ( function_exists('get_field') ) {
+	$url	= get_field( 'acf-post-attributes_google_url' );
+}
 
 if ( ! $url )
 	return;

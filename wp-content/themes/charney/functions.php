@@ -51,3 +51,6 @@ if ( ! defined( 'USE_LOCAL_ACF_CONFIGURATION' ) || ! USE_LOCAL_ACF_CONFIGURATION
 	// ACF Field Groups
 	require_once( 'functions/acf/acf-field-groups.php' );
 }
+
+// Google Drive
+require_once( 'functions/google-drive.php' );

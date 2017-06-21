@@ -494,6 +494,18 @@ body {
 												@include transition(bottom);
 											}
 
+											.duration {
+												position: absolute;
+												padding: 5px;
+												top: -50%;
+												right: 0;
+												font-size: 14px;
+												font-weight: $font-semi-bold;
+												color: $white;
+												background: rgba(0,0,0,0.7);
+												@include transition(top);
+											}
+
 											.icon-play {
 												position: absolute;
 												@include calc('top', "50% - 25px");
@@ -504,6 +516,10 @@ body {
 											&:hover {
 												figcaption {
 													bottom: 0;
+												}
+
+												.duration {
+													top: 0;
 												}
 											}
 										}

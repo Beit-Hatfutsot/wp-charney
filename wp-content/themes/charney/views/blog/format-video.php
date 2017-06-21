@@ -12,24 +12,35 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Variables
  */
-$url			= get_field( 'acf-post-attributes_video_url' );
-$cover			= get_field( 'acf-post-attributes_video_cover_image' );
-$default_cover	= get_field( 'acf-general-options_default_video_cover_image', 'option' );
+if ( function_exists('get_field') ) {
+	$drive_item_id	= get_field( 'acf-post-attributes_google_drive_id' );
+	$url			= get_field( 'acf-post-attributes_google_url' );
+	$duration		= get_field( 'acf-post-attributes_google_duration' );
+}
 
-if ( ! $url || ! ( $cover || $default_cover ) )
+if ( ! $url )
 	return;
 
-$image = $cover ? $cover : $default_cover;
+// Build thumbnail URL
+$thumbnail = 'https://drive.google.com/thumbnail?authuser=0&sz=w450&id=' . $drive_item_id;
 
 ?>
 
 <div class="blog-item blog-item-video">
 
 	<figure>
-		<img src="<?php echo $image['sizes']['medium']; ?>" width="<?php echo $image['sizes']['medium-width']; ?>" height="<?php echo $image['sizes']['medium-height']; ?>" alt="<?php the_title(); ?>" />
+		<img src="<?php echo $thumbnail; ?>" alt="<?php the_title(); ?>" />
 		<figcaption>
 			<?php the_title(); ?>
 		</figcaption>
+
+		<?php if ( $duration ) { ?>
+			<div class="duration">
+				<?php
+					echo charney_milliseconds_to_time( $duration );
+				?>
+			</div>
+		<?php } ?>
 
 		<div class="icon icon-play">
 			<?php get_template_part( 'views/svgs/shape', 'play' ); ?>

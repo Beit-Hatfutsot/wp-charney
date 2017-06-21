@@ -1,28 +1,12 @@
 {
     "key": "group_58f5f4a695641",
-    "title": "Post Attributes - Video",
+    "title": "Post Attributes - Video\/Audio\/Link",
     "fields": [
         {
-            "key": "field_58f5f4a69e6a7",
-            "label": "Video URL",
-            "name": "acf-post-attributes_video_url",
-            "type": "url",
-            "instructions": "Google Drive Embedded iframe Source",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "https:\/\/drive.google.com\/"
-        },
-        {
-            "key": "field_58f75c18876a2",
-            "label": "Cover Image",
-            "name": "acf-post-attributes_video_cover_image",
-            "type": "image",
+            "key": "field_594a235757819",
+            "label": "Manual Settings",
+            "name": "",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -31,16 +15,145 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_58f5f4a69e6a7",
+            "label": "Google Drive ID",
+            "name": "acf-post-attributes_google_drive_id",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_594a2508eee2d",
+            "label": "Video URL (temporary field)",
+            "name": "acf-post-attributes_video_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_594a35f31f05b",
+            "label": "Audio URL (temporary field)",
+            "name": "acf-post-attributes_audio_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_594a35f71f05c",
+            "label": "PDF URL (temporary field)",
+            "name": "acf-post-attributes_pdf_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_594a23895781a",
+            "label": "Google Drive API Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_594a2474eee2c",
+            "label": "Instructions",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Do not fill in the fields within this section.\r\nAll fields will be filled in automatically upon post update.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_594a26123508d",
+            "label": "URL",
+            "name": "acf-post-attributes_google_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_594a26d03508e",
+            "label": "Duration",
+            "name": "acf-post-attributes_google_duration",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -55,6 +168,30 @@
                 "operator": "==",
                 "value": "video"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_format",
+                "operator": "==",
+                "value": "audio"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_format",
+                "operator": "==",
+                "value": "link"
+            }
         ]
     ],
     "menu_order": 3,
@@ -67,5 +204,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1495452865
+    "modified": 1498044262
 }
