@@ -30,7 +30,13 @@ if ( function_exists('get_field') ) {
 	</div>
 
 	<div class="item-title">
-		<?php printf( __( '<strong>Error loading file:</strong> %s', 'charney' ), get_the_title() ); ?>
+		<?php
+			if ( ! $url ) {
+				printf( __( '<strong>Error loading file:</strong> %s', 'charney' ), get_the_title() );
+			} else {
+				the_title();
+			}
+		?>
 	</div>
 
 	<div class="clearfix"></div>
