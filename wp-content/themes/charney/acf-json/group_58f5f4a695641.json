@@ -38,54 +38,6 @@
             "maxlength": ""
         },
         {
-            "key": "field_594a2508eee2d",
-            "label": "Video URL (temporary field)",
-            "name": "acf-post-attributes_video_url",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_594a35f31f05b",
-            "label": "Audio URL (temporary field)",
-            "name": "acf-post-attributes_audio_url",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_594a35f71f05c",
-            "label": "PDF URL (temporary field)",
-            "name": "acf-post-attributes_pdf_url",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
             "key": "field_594a23895781a",
             "label": "Google Drive API Settings",
             "name": "",
@@ -204,5 +156,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1498044262
+    "modified": 1498993880
 }
