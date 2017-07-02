@@ -547,6 +547,14 @@ body {
 											font-size: 14px;
 										}
 									}
+
+									&.no-url {
+										cursor: default;
+
+										.icon-play {
+											display: none;
+										}
+									}
 								}
 							}
 						}

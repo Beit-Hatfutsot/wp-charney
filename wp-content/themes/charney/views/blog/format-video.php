@@ -18,15 +18,12 @@ if ( function_exists('get_field') ) {
 	$duration		= get_field( 'acf-post-attributes_google_duration' );
 }
 
-if ( ! $url )
-	return;
-
 // Build thumbnail URL
-$thumbnail = 'https://drive.google.com/thumbnail?authuser=0&sz=w450&id=' . $drive_item_id;
+$thumbnail = $drive_item_id && $url ? 'https://drive.google.com/thumbnail?authuser=0&sz=w450&id=' . $drive_item_id : TEMPLATE . '/images/general/placeholder.png';
 
 ?>
 
-<div class="blog-item blog-item-video">
+<div class="blog-item blog-item-video <?php echo $url ? '' : 'no-url'; ?>">
 
 	<figure>
 		<img src="<?php echo $thumbnail; ?>" alt="<?php the_title(); ?>" />
@@ -43,7 +40,12 @@ $thumbnail = 'https://drive.google.com/thumbnail?authuser=0&sz=w450&id=' . $driv
 		<?php } ?>
 
 		<div class="icon icon-play">
-			<?php get_template_part( 'views/svgs/shape', 'play' ); ?>
+			<?php
+				/**
+				 * Display play icon
+				 */
+				get_template_part( 'views/svgs/shape', 'play' );
+			?>
 		</div>
 	</figure>
 
