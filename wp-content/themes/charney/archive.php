@@ -41,4 +41,11 @@ get_header(); ?>
 	
 ?>
 
+<?php
+
+	// Modal
+	get_template_part( 'views/blog/modal' );
+
+?>
+
 <?php get_footer(); ?>

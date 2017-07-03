@@ -27,7 +27,10 @@ var $ = jQuery,
 				'width-480'		: 1
 			},
 			masonry_heights		: [],
-			masonry_maxHeight	: ''
+			masonry_maxHeight	: '',
+
+			// Modal
+			modal_current_item	: ''
 
 		},
 
@@ -50,40 +53,11 @@ var $ = jQuery,
 				Charney_general.timeline(js_globals.timeline_source);
 			}
 
-			// Embedded video - responsive treatment
-			$('.page-content').find('iframe, object, embed').each(function() {
-				if ( $(this).hasClass('no-flex') )
-					return;
-					
-				var src = $(this).attr('src');
-				
-				$(this).wrap("<div class='flex-video'></div>");
-				
-				// Add some usefull attributes
-				if (src.indexOf('youtube.com') >= 0) {
-					src = src.concat('/?showinfo=0&autohide=1&rel=0&wmode=transparent');
-					$(this).attr('src', src);
-					$(this).attr('wmode', 'Opaque');
-				}
-			});
-
-			// Gallery
-			if ( typeof _BH_gallery_images !== 'undefined' && _BH_gallery_images.length > 0 ) {
-				// Init gallery
-				Charney_general.params.gallery_images = $.parseJSON( _BH_gallery_images );
-				Charney_general.lazyLoad(0, Charney_general.params.photos_more_interval);
-
-				// Bind click event to gallery 'load more' btn
-				$('.gallery-layout-content .load-more').bind('click', function() {
-					Charney_general.lazyLoad(Charney_general.params.active_photos, Charney_general.params.photos_more_interval);
-				});
-
-				// PhotoSwipe
-				Charney_general.initPhotoSwipeFromDOM('.gallery');
-			}
-
 			// Masonry
 			Charney_general.masonry();
+
+			// Modal
+			Charney_general.modal();
 
 		},
 
@@ -103,171 +77,6 @@ var $ = jQuery,
 			}
 
 			timeline = new TL.Timeline('timeline-embed', src, timeline_options);
-
-		},
-
-		/**
-		 * lazyLoad
-		 *
-		 * Load gallery images
-		 *
-		 * @param	offset (int)
-		 * @param	amount (int)
-		 * @return	N/A
-		 */
-		lazyLoad : function(offset, amount) {
-
-			var index, j;
-
-			for (index=offset, j=0 ; j<amount && Charney_general.params.gallery_images.length>index ; index++, j++) {
-				// Expose photo
-				var photoItem =
-					'<figure class="gallery-item" data-index="' + index + '" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">' +
-						'<a href="' + Charney_general.params.gallery_images[index]['url'] + '" itemprop="contentUrl">' +
-							'<img src="' + Charney_general.params.gallery_images[index]['url'] + '" itemprop="thumbnail" alt="' + Charney_general.params.gallery_images[index]['alt'] + '" />' +
-						'</a>' +
-						'<figcaption itemprop="caption description">' + Charney_general.params.gallery_images[index]['title'] + '<br><span>' + Charney_general.params.gallery_images[index]['caption'] +  '</span></figcaption>' +
-					'</figure>'
-					;
-
-				$(photoItem).appendTo( $('.gallery .col' + Charney_general.params.active_column%Charney_general.params.photos_columns) );
-
-				// Update active column
-				Charney_general.params.active_column = Charney_general.params.active_column%Charney_general.params.photos_columns + 1;
-			}
-
-			if ( index == Charney_general.params.gallery_images.length ) {
-				// Hide more btn
-				$('.gallery-layout-content .load-more').css('display', 'none');
-			} else {
-				// Expose more btn
-				$('.gallery-layout-content .load-more').css('display', 'block');
-			}
-
-			// Update active photos
-			Charney_general.params.active_photos += j;
-
-		},
-
-		/**
-		 * initPhotoSwipeFromDOM
-		 *
-		 * PhotoSwipe init
-		 *
-		 * @param	gallerySelector (string)
-		 * @return	N/A
-		 */
-		initPhotoSwipeFromDOM : function(gallerySelector) {
-
-			// Parse slide data (url, title, size ...) from DOM elements
-			// (children of gallerySelector)
-			var parseThumbnailElements = function(el) {
-				var galleryCols = el.children('.gallery-col'),
-					items = [];
-
-				$(galleryCols).each(function() {
-					var galleryColItems = $(this).children('.gallery-item');
-
-					$(galleryColItems).each(function() {
-						var index = $(this).attr('data-index'),
-							link = $(this).children('a'),
-							caption = $(this).children('figcaption'),
-							img = link.children('img');
-
-						// Create slide object
-						var item = {
-							src: link.attr('href'),
-							w: img[0].naturalWidth,
-							h: img[0].naturalHeight,
-							msrc: img.attr('src')
-						};
-
-						if (caption) {
-							item.title = caption.html();
-						}
-
-						item.el = $(this)[0];	// Save link to element for getThumbBoundsFn
-
-						items[index] = item;
-					});
-				});
-
-				// return
-				return items;
-			};
-
-			// Triggers when user clicks on thumbnail
-			var onThumbnailsClick = function(e) {
-				e = e || window.event;
-				e.preventDefault ? e.preventDefault() : e.returnValue = false;
-
-				var eTarget = e.target || e.srcElement;
-
-				// Find root element of slide
-				var clickedListItem = $(eTarget).parent().parent();
-
-				if(!clickedListItem) {
-					return;
-				}
-
-				// Find index of clicked item
-				var clickedGallery = clickedListItem.parent().parent(),
-					index = clickedListItem.attr('data-index');
-
-				if(clickedGallery && index >= 0) {
-					// Open PhotoSwipe if valid index found
-					openPhotoSwipe( index, clickedGallery );
-				}
-
-				// return
-				return false;
-			};
-
-			var openPhotoSwipe = function(index, galleryElement) {
-				var pswpElement = document.querySelectorAll('.pswp')[0],
-					gallery,
-					options,
-					items;
-
-				items = parseThumbnailElements(galleryElement);
-
-				// Define options (if needed)
-				options = {
-
-					// Define gallery index (for URL)
-					galleryUID: galleryElement.attr('data-pswp-uid'),
-
-					getThumbBoundsFn: function(index) {
-						// See Options -> getThumbBoundsFn section of documentation for more info
-						var thumbnail = items[index].el.getElementsByTagName('img')[0],		// Find thumbnail
-						pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-						rect = thumbnail.getBoundingClientRect(); 
-
-						// return
-						return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-					},
-
-					index: parseInt(index, 10)
-
-				};
-
-				// Exit if index not found
-				if( isNaN(options.index) ) {
-					return;
-				}
-
-				// Pass data to PhotoSwipe and initialize it
-				gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-				gallery.init();
-			};
-
-			// Loop through all gallery elements and bind events
-			var galleryElements = document.querySelectorAll( gallerySelector );
-
-			for(var i = 0, l = galleryElements.length; i < l; i++) {
-				galleryElements[i].setAttribute('data-pswp-uid', i+1);
-				galleryElements[i].onclick = onThumbnailsClick;
-			}
 
 		},
 
@@ -304,8 +113,8 @@ var $ = jQuery,
 		masonry_init : function() {
 
 			// Params
-			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
-			var pads		= $('.' + Charney_general.params.masonry_classes.masonry_pad);
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container),
+				pads		= $('.' + Charney_general.params.masonry_classes.masonry_pad);
 
 			// Remove pads
 			if (pads.length) {
@@ -334,8 +143,8 @@ var $ = jQuery,
 		masonry_set_heights : function() {
 
 			// Params
-			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
-			var panels		= $('.' + Charney_general.params.masonry_classes.masonry_panel);
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container),
+				panels		= $('.' + Charney_general.params.masonry_classes.masonry_panel);
 
 			// Initiate masonry_heights
 			var heights = [];
@@ -382,10 +191,10 @@ var $ = jQuery,
 		masonry_pads : function() {
 
 			// Params
-			var breakpoint	= Charney_general.params.breakpoint;
-			var cols		= Charney_general.params.masonry_cols['width-' + breakpoint];
-			var heights		= Charney_general.params.masonry_heights;
-			var maxHeight	= Charney_general.params.masonry_maxHeight;
+			var breakpoint	= Charney_general.params.breakpoint,
+				cols		= Charney_general.params.masonry_cols['width-' + breakpoint],
+				heights		= Charney_general.params.masonry_heights,
+				maxHeight	= Charney_general.params.masonry_maxHeight;
 
 			// Create pads for filled columns
 			$.map(heights, function (height, idx) {
@@ -414,9 +223,9 @@ var $ = jQuery,
 		masonry_create_pad : function(height, cols, order) {
 
 			// Params
-			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container);
-			var maxHeight	= Charney_general.params.masonry_maxHeight;
-			var pad_class	= Charney_general.params.masonry_classes.masonry_pad;
+			var container	= $('.' + Charney_general.params.masonry_classes.masonry_container),
+				maxHeight	= Charney_general.params.masonry_maxHeight,
+				pad_class	= Charney_general.params.masonry_classes.masonry_pad;
 
 			if (typeof height === "undefined" || height === null) {
 				height = 0;
@@ -495,8 +304,8 @@ var $ = jQuery,
 				return;
 
 			// Params
-			var panels			= $('.' + Charney_general.params.masonry_classes.masonry_panel);
-			var format_panels	= $('.' + Charney_general.params.masonry_classes.masonry_panel + '-' + format);
+			var panels			= $('.' + Charney_general.params.masonry_classes.masonry_panel),
+				format_panels	= $('.' + Charney_general.params.masonry_classes.masonry_panel + '-' + format);
 
 			// Hide all panels
 			panels.addClass('hidden');
@@ -520,8 +329,9 @@ var $ = jQuery,
 				return;
 
 			// Params
-			var format_panels	= $('.' + Charney_general.params.masonry_classes.masonry_panel + '-' + format);
-			var breakpoint		= Charney_general.params.breakpoint;
+			var format_panels	= $('.' + Charney_general.params.masonry_classes.masonry_panel + '-' + format),
+				breakpoint		= Charney_general.params.breakpoint;
+
 			cols				= Charney_general.params.masonry_cols['width-' + breakpoint];
 			order_idx			= 0;
 
@@ -579,7 +389,7 @@ var $ = jQuery,
 		/**
 		 * masonry_expose_items
 		 *
-		 * xpose all items
+		 * Expose all items
 		 *
 		 * @param	N/A
 		 * @return	N/A
@@ -591,6 +401,161 @@ var $ = jQuery,
 
 			// Expose all format panels and remove style attribute (order & height)
 			panels.removeClass('hidden').removeAttr('style');
+
+		},
+
+		/**
+		 * modal
+		 *
+		 * Initialize modal
+		 *
+		 * @param	N/A
+		 * @return	N/A
+		 */
+		modal : function() {
+
+			// Params
+			var selector,
+				counter = 0;
+
+			// Update item IDs
+			$('[data-item-id]').each(function() {
+				counter++;
+				$(this).attr('data-item-id', counter);
+			});
+
+			// Bind items click event
+			$('.blog-item-modal').on('click',function() {
+				Charney_general.modal_update($(this), counter);
+			});
+
+			// Bind next/previous buttons click events
+			$('#show-next-item, #show-previous-item').click(function() {
+				if($(this).attr('id') == 'show-previous-item') {
+					Charney_general.params.modal_current_item--;
+				} else {
+					Charney_general.params.modal_current_item++;
+				}
+
+				selector = $('[data-item-id="' + Charney_general.params.modal_current_item + '"]');
+				Charney_general.modal_update(selector, counter);
+			});
+
+			// Bind next/previous arrow key press events
+			$(document).keydown(function(e) {
+				if (!$('body').hasClass('modal-open'))
+					return;
+
+				switch(e.which) {
+					case 37: // left
+						if (Charney_general.params.modal_current_item == 1)
+							return;
+
+						Charney_general.params.modal_current_item -= 2;
+
+					case 39: // right
+						if (Charney_general.params.modal_current_item == counter)
+							return;
+
+						Charney_general.params.modal_current_item++;
+						selector = $('[data-item-id="' + Charney_general.params.modal_current_item + '"]');
+						Charney_general.modal_update(selector, counter);
+						break;
+
+					default: return; // exit this handler for other keys
+				}
+
+				e.preventDefault(); // prevent the default action (scroll / move caret)
+			});
+
+			// Empty modal content on hide event
+			$('#archive-items-modal').on('hide.bs.modal', function (e) {
+				$('#archive-items-modal-content').html('');
+			});
+
+		},
+
+		/**
+		 * modal_update
+		 *
+		 * Update modal with current item attributes
+		 *
+		 * @param	selector (string) selector on which to update modal
+		 * @param	counter_max (int) number of existing items
+		 * @return	N/A
+		 */
+		modal_update : function(selector, counter_max) {
+
+			// Params
+			var type		= selector.data('type'),
+				url			= selector.data('url');
+				content		= '';
+
+			Charney_general.params.modal_current_item = selector.data('item-id');
+
+			// Update modal
+			$('#archive-items-modal-title').text(selector.data('title'));
+			$('#archive-items-modal-excerpt').text(selector.data('excerpt'));
+
+			switch (type) {
+				case 'video':
+				case 'link':
+					url = url.replace('view', 'preview');
+					content =
+						'<div class="flex-video">' +
+							'<iframe src="' + url + '">' + '</iframe>' +
+						'</div>';
+
+					break;
+
+				case 'audio':
+					url = url.replace('view', 'preview');
+					content =
+						'<iframe class="audio-iframe" src="' + url + '">' + '</iframe>';
+
+					break;
+
+				case 'image':
+					content =
+						'<img src="' + url + '" />';
+
+					break;
+
+				default: return;
+			}
+
+			// Update modal content
+			$('#archive-items-modal-content').html(content);
+
+			// Disable modal buttons when needed
+			Charney_general.modal_disable_buttons(counter_max, selector.data('item-id'));
+
+		},
+
+		/**
+		 * modal_disable_buttons
+		 *
+		 * Disable modal buttons when needed
+		 *
+		 * @param	counter_max (int)
+		 * @param	counter_current (int)
+		 * @return	N/A
+		 */
+		modal_disable_buttons : function(counter_max, counter_current) {
+
+			$('#show-previous-item, #show-next-item').show();
+
+			if (counter_max == 1) {
+				$('#show-previous-item, #show-next-item').hide();
+			}
+			else {
+				if (counter_max == counter_current) {
+					$('#show-next-item').hide();
+				}
+				else if (counter_current == 1) {
+					$('#show-previous-item').hide();
+				}
+			}
 
 		},
 

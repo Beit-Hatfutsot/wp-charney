@@ -53,17 +53,10 @@ global $globals;
 	get_template_part( 'views/footer/footer' );
 
 	/**
-	 * PhotoSwipe
-	 */
-	get_template_part( 'views/footer/footer-photoswipe' );
-
-	/**
 	 * Footer scripts
 	 */
 	wp_enqueue_script( 'bootstrap' );
 	wp_enqueue_script( 'jquery-ui' );
-	wp_enqueue_script( 'photoswipe' );
-	wp_enqueue_script( 'photoswipe-ui-default' );
 	if ( $globals['page_template'] == 'main.php' && $globals['timeline_source'] != '' ) wp_enqueue_script( 'timeline' );
 	wp_enqueue_script( 'general' );
 

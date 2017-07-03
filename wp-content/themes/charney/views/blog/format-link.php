@@ -18,7 +18,7 @@ if ( function_exists('get_field') ) {
 
 ?>
 
-<div class="blog-item blog-item-link <?php echo $url ? '' : 'no-url'; ?>">
+<div class="blog-item blog-item-link <?php echo $url ? 'blog-item-modal' : 'no-url'; ?>" <?php echo $url ? 'data-item-id="" data-type="link" data-toggle="modal" data-title="' . get_the_title() . '" data-excerpt="' . get_the_excerpt() . '" data-url="' . $url . '" data-target="#archive-items-modal"' : '' ; ?>>
 
 	<div class="icon icon-pdf">
 		<?php
