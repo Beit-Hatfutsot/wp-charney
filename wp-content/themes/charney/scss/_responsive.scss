@@ -150,6 +150,26 @@
 						}
 					}
 
+					/************/
+					/* featured */
+					/************/
+
+					&.featured {
+						padding-bottom: 5px;
+
+						.items {
+							.item {
+								margin-bottom: 15px;
+								width: 100%;
+
+								.item-excerpt {
+									height: auto;
+									max-height: 82px;
+								}
+							}
+						}
+					}
+
 					/*****************/
 					/* archive items */
 					/*****************/
@@ -189,6 +209,20 @@
 		.content-wrapper {
 			.content {
 				.content-section {
+
+					/************/
+					/* featured */
+					/************/
+
+					&.featured {
+						.items {
+							.item {
+								&:nth-child(4) {
+									display: none;
+								}
+							}
+						}
+					}
 
 					/*****************/
 					/* archive items */
@@ -274,6 +308,21 @@
 			.content {
 				.content-section {
 
+					/************/
+					/* featured */
+					/************/
+
+					&.featured {
+						padding-bottom: 5px;
+
+						.items {
+							.item {
+								margin-bottom: 15px;
+								width: 50%;
+							}
+						}
+					}
+
 					/*****************/
 					/* archive items */
 					/*****************/
@@ -285,6 +334,41 @@
 
 								&:nth-child(2n+1) { @include flex-order(1); }
 								&:nth-child(2n+2) { @include flex-order(2); }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 651px) and (max-width: 767px) {
+
+	/****************/
+	/* page content */
+	/****************/
+
+	.page-content {
+
+		/***********/
+		/* content */
+		/***********/
+
+		.content-wrapper {
+			.content {
+				.content-section {
+
+					/************/
+					/* featured */
+					/************/
+
+					&.featured {
+						.items {
+							.item {
+								&:nth-child(4) {
+									display: none;
+								}
 							}
 						}
 					}
@@ -350,6 +434,21 @@
 		.content-wrapper {
 			.content {
 				.content-section {
+
+					/************/
+					/* featured */
+					/************/
+
+					&.featured {
+						padding-bottom: 5px;
+
+						.items {
+							.item {
+								margin-bottom: 15px;
+								width: 50%;
+							}
+						}
+					}
 
 					/*****************/
 					/* archive items */

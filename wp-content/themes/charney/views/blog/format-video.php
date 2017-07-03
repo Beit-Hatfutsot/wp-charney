@@ -23,12 +23,12 @@ $thumbnail = $drive_item_id && $url ? 'https://drive.google.com/thumbnail?authus
 
 ?>
 
-<div class="blog-item blog-item-video <?php echo $url ? 'blog-item-modal' : 'no-url'; ?>" <?php echo $url ? 'data-item-id="" data-type="video" data-toggle="modal" data-title="' . get_the_title() . '" data-excerpt="' . get_the_excerpt() . '" data-url="' . $url . '" data-target="#archive-items-modal"' : '' ; ?>>
+<div class="blog-item blog-item-video <?php echo $url ? 'blog-item-modal' : 'no-url'; ?>" <?php echo $url ? 'data-item-id="" data-type="video" data-toggle="modal" data-title="' . esc_html( get_the_title() ) . '" data-excerpt="' . esc_html( get_the_excerpt() ) . '" data-url="' . $url . '" data-target="#archive-items-modal"' : '' ; ?>>
 
 	<figure>
-		<img src="<?php echo $thumbnail; ?>" alt="<?php the_title(); ?>" />
+		<img src="<?php echo $thumbnail; ?>" alt="<?php echo esc_html( get_the_title() ); ?>" />
 		<figcaption>
-			<?php the_title(); ?>
+			<?php echo esc_html( get_the_title() ); ?>
 		</figcaption>
 
 		<?php if ( $duration ) { ?>

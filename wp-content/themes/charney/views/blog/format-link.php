@@ -18,7 +18,7 @@ if ( function_exists('get_field') ) {
 
 ?>
 
-<div class="blog-item blog-item-link <?php echo $url ? 'blog-item-modal' : 'no-url'; ?>" <?php echo $url ? 'data-item-id="" data-type="link" data-toggle="modal" data-title="' . get_the_title() . '" data-excerpt="' . get_the_excerpt() . '" data-url="' . $url . '" data-target="#archive-items-modal"' : '' ; ?>>
+<div class="blog-item blog-item-link <?php echo $url ? 'blog-item-modal' : 'no-url'; ?>" <?php echo $url ? 'data-item-id="" data-type="link" data-toggle="modal" data-title="' . esc_html( get_the_title() ) . '" data-excerpt="' . esc_html( get_the_excerpt() ) . '" data-url="' . $url . '" data-target="#archive-items-modal"' : '' ; ?>>
 
 	<div class="icon icon-pdf">
 		<?php
@@ -32,9 +32,9 @@ if ( function_exists('get_field') ) {
 	<div class="item-title">
 		<?php
 			if ( ! $url ) {
-				printf( __( '<strong>Error loading file:</strong> %s', 'charney' ), get_the_title() );
+				printf( __( '<strong>Error loading file:</strong> %s', 'charney' ), esc_html( get_the_title() ) );
 			} else {
-				the_title();
+				echo esc_html( get_the_title() );
 			}
 		?>
 	</div>

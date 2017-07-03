@@ -62,6 +62,21 @@ var $ = jQuery,
 		},
 
 		/**
+		 * featured_init
+		 *
+		 * Initialize featured items
+		 *
+		 * @param	N/A
+		 * @return	N/A
+		 */
+		featured_init : function() {
+
+			// Show featured items
+			$('.featured .items').show();
+
+		},
+
+		/**
 		 * timeline
 		 *
 		 * Load timeline
@@ -616,6 +631,12 @@ var $ = jQuery,
 
 			// Set window breakpoint values
 			Charney_general.breakpoint_refreshValue();
+
+			// Featured
+			if ($('body').hasClass('page-template-main')) {
+				// Initialize featured items
+				Charney_general.featured_init();
+			}
 
 			// Masonry
 			if (container.hasClass('filtered')) {

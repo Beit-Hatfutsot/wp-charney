@@ -30,6 +30,13 @@
 
 <?php
 	/**
+	 * Display the featured items
+	 */
+	get_template_part( 'views/main/main', 'featured' );
+?>
+
+<?php
+	/**
 	 * Display the timeline
 	 */
 	get_template_part( 'views/main/main', 'timeline' );

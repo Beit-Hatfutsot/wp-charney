@@ -43,7 +43,9 @@ get_header(); ?>
 
 <?php
 
-	// Modal
+	/**
+	 * Display the blog archive modal
+	 */
 	get_template_part( 'views/blog/modal' );
 
 ?>
