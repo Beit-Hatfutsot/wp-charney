@@ -1,6 +1,6 @@
 {
   "name": "charney",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Leon Charney - Digital Archive",
   "main": "Gruntfile.js",
   "scripts": {
