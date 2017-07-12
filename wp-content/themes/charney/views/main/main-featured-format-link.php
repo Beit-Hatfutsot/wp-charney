@@ -4,7 +4,7 @@
  *
  * @author		Beit Hatfutsot
  * @package		charney/views/main
- * @version		1.0.0
+ * @version		1.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
