@@ -186,6 +186,23 @@
 							}
 						}
 					}
+
+					/*********/
+					/* books */
+					/*********/
+
+					&.books {
+						.book {
+							.image {
+								width: 100%;
+							}
+
+							.content {
+								padding: 10px 30px;
+								width: 100%;
+							}
+						}
+					}
 				}
 			}
 		}

@@ -529,7 +529,6 @@ body {
 
 				&.featured,
 				&.archive-items {
-
 					.blog-item {
 						cursor: pointer;
 
@@ -620,6 +619,52 @@ body {
 
 							.icon-play {
 								display: none;
+							}
+						}
+					}
+				}
+
+				/*********/
+				/* books */
+				/*********/
+
+				&.books {
+					.book {
+						position: relative;
+						margin-bottom: 20px;
+						background-color: $gray-color6;
+
+						.content {
+							position: initial;
+							padding: 10px 30px 10px 0;
+
+							h2 {
+								margin-bottom: 0;
+								font-size: 20px;
+								font-weight: $font-bold;
+								color: $font-color;
+							}
+
+							small {
+								margin-bottom: 20px;
+								font-size: 20px;
+								font-weight: $font-light;
+								display: block;
+							}
+
+							.desc {
+								padding-bottom: 56px;
+							}
+
+							.purchase {
+								position: absolute;
+								bottom: 10px;
+								padding: 5px 10px;
+								font-size: 20px;
+								font-weight: $font-bold;
+								color: white;
+								background-color: $orange-color2;
+								text-decoration: none;
 							}
 						}
 					}

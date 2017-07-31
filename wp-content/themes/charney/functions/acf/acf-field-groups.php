@@ -4,7 +4,7 @@
  *
  * @author		Beit Hatfutsot
  * @package		charney/functions/acf
- * @version		1.0.0
+ * @version		1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @fieldgroup	Main
  * @fieldgroup	Post Attributes - Image
  * @fieldgroup	Post Attributes - Video/Audio/Link
+ * @fieldgroup	Books
  * @fieldgroup	General Options
  */
 if( function_exists('acf_add_local_field_group') ):
@@ -603,6 +604,150 @@ All fields will be filled in automatically upon post update.',
 		),
 	),
 	'menu_order' => 3,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => array (
+		0 => 'the_content',
+	),
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
+	'key' => 'group_597f09aab9643',
+	'title' => 'Books',
+	'fields' => array (
+		array (
+			'key' => 'field_597f09edc744d',
+			'label' => 'Page Description',
+			'name' => 'acf-books_description',
+			'type' => 'textarea',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => 'wpautop',
+		),
+		array (
+			'key' => 'field_597f0a5ac744e',
+			'label' => 'Books',
+			'name' => 'acf-books_items',
+			'type' => 'repeater',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'collapsed' => '',
+			'min' => 0,
+			'max' => 0,
+			'layout' => 'table',
+			'button_label' => 'Add Book',
+			'sub_fields' => array (
+				array (
+					'key' => 'field_597f0a95c744f',
+					'label' => 'Image',
+					'name' => 'image',
+					'type' => 'image',
+					'instructions' => 'Image width: 450px',
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'array',
+					'preview_size' => 'thumbnail',
+					'library' => 'all',
+					'min_width' => '',
+					'min_height' => '',
+					'min_size' => '',
+					'max_width' => '',
+					'max_height' => '',
+					'max_size' => '',
+					'mime_types' => 'jpg,jpeg,png',
+				),
+				array (
+					'key' => 'field_597f0b26c7450',
+					'label' => 'Title',
+					'name' => 'title',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				array (
+					'key' => 'field_597f0b91c7451',
+					'label' => 'Description',
+					'name' => 'description',
+					'type' => 'textarea',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'maxlength' => '',
+					'rows' => '',
+					'new_lines' => 'wpautop',
+				),
+				array (
+					'key' => 'field_597f0bcfc7452',
+					'label' => 'Link',
+					'name' => 'link',
+					'type' => 'url',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => 'http://',
+				),
+			),
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'page_template',
+				'operator' => '==',
+				'value' => 'page-templates/books.php',
+			),
+		),
+	),
+	'menu_order' => 4,
 	'position' => 'normal',
 	'style' => 'default',
 	'label_placement' => 'top',
