@@ -25,7 +25,7 @@ if ( ! $image || ! $title )
 <div class="book">
 	<div class="row">
 
-		<div class="image col-xs-4"><?php echo $image ? '<img src="' . $image['url'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '" alt="' . $title . '" />' : ''; ?></div>
+		<div class="image col-xs-4"><?php echo $image ? '<img src="' . $image['sizes']['medium'] . '" width="' . $image['sizes']['medium-width'] . '" height="' . $image['sizes']['medium-height'] . '" alt="' . $title . '" />' : ''; ?></div>
 
 		<div class="content col-xs-8">
 
