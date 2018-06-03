@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @fieldgroup	Main
  * @fieldgroup	Post Attributes - Image
  * @fieldgroup	Post Attributes - Video/Audio/Link
+ * @fieldgroup	Post Attributes – Video
  * @fieldgroup	Books
  * @fieldgroup	General Options
  */
@@ -616,6 +617,87 @@ All fields will be filled in automatically upon post update.',
 ));
 
 acf_add_local_field_group(array (
+	'key' => 'group_5981a08a6fbdd',
+	'title' => 'Post Attributes – Video',
+	'fields' => array (
+		array (
+			'key' => 'field_5981a0adb8976',
+			'label' => 'Year',
+			'name' => 'acf-post-attributes_video_year',
+			'type' => 'select',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array (
+				1989 => '1989',
+				1990 => '1990',
+				1991 => '1991',
+				1992 => '1992',
+				1993 => '1993',
+				1994 => '1994',
+				1995 => '1995',
+				1996 => '1996',
+				1997 => '1997',
+				1998 => '1998',
+				1999 => '1999',
+				2000 => '2000',
+				2001 => '2001',
+				2002 => '2002',
+				2003 => '2003',
+				2004 => '2004',
+				2005 => '2005',
+				2006 => '2006',
+				2007 => '2007',
+				2008 => '2008',
+				2009 => '2009',
+				2010 => '2010',
+				2011 => '2011',
+				2012 => '2012',
+				2013 => '2013',
+				2014 => '2014',
+				2015 => '2015',
+				2016 => '2016',
+			),
+			'default_value' => array (
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'ui' => 0,
+			'ajax' => 0,
+			'return_format' => 'value',
+			'placeholder' => '',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+			array (
+				'param' => 'post_format',
+				'operator' => '==',
+				'value' => 'video',
+			),
+		),
+	),
+	'menu_order' => 4,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
 	'key' => 'group_597f09aab9643',
 	'title' => 'Books',
 	'fields' => array (
@@ -747,7 +829,7 @@ acf_add_local_field_group(array (
 			),
 		),
 	),
-	'menu_order' => 4,
+	'menu_order' => 5,
 	'position' => 'normal',
 	'style' => 'default',
 	'label_placement' => 'top',
