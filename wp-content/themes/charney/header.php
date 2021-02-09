@@ -6,7 +6,7 @@
  *
  * @author		Beit Hatfutsot
  * @package		charney
- * @version		1.0.0
+ * @version		1.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,6 +22,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 
 <body <?php body_class(); ?>>
+
+	<?php
+		/**
+		 * gtm body
+		 */
+		gtm_body();
+	?>
 
 	<?php
 		/**

@@ -4,7 +4,7 @@
  *
  * @author		Beit Hatfutsot
  * @package		charney
- * @version		1.0.0
+ * @version		1.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,6 +20,9 @@ require_once( 'functions/theme.php' );
 
 // Scripts and styles
 require_once( 'functions/scripts-n-styles.php' );
+
+// gtm
+require_once( 'functions/gtm.php' );
 
 // Admin login tweaks
 require_once( 'functions/admin/login.php' );

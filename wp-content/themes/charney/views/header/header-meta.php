@@ -4,7 +4,7 @@
  *
  * @author		Beit Hatfutsot
  * @package		charney/views/header
- * @version		1.0.0
+ * @version		1.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -34,5 +34,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	?>
 
 	<?php wp_head(); ?>
+
+	<?php
+		/**
+		 * gtm head
+		 */
+		gtm_head();
+	?>
 
 </head>

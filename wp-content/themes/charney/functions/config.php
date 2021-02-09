@@ -4,7 +4,7 @@
  *
  * @author		Beit Hatfutsot
  * @package		charney/functions
- * @version		1.0.0
+ * @version		1.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -35,6 +35,7 @@ define( 'THEME_ROOT',	"$theme_root/$stylesheet" );
 define( 'CSS_DIR',		TEMPLATE . '/css' );
 define( 'JS_DIR',		TEMPLATE . '/js' );
 define( 'WIDGETS_PATH',	THEME_ROOT . '/widgets' );
+define( 'GTM_ID',		'GTM-5KQXW5P' );
 
 /**
  * Google Fonts
