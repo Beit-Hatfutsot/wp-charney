@@ -4,7 +4,7 @@
  *
  * @author		Beit Hatfutsot
  * @package		charney/views/components
- * @version		1.0.0
+ * @version		1.0.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -56,8 +56,8 @@ if ( function_exists('get_field') ) {
 					 */
 					?>
 
-					<a href="//www.bh.org.il" target="_blank">
-						<?php get_template_part( 'views/svgs/shape', 'bh-logo' ); ?>
+					<a href="//www.anumuseum.org.il" target="_blank">
+						<?php get_template_part( 'views/svgs/shape', 'anu-logo' ); ?>
 					</a>
 
 			</div>

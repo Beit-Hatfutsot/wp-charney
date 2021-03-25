@@ -30,7 +30,7 @@ body {
 	padding-bottom: 56.25%;
 	height: 0;
 	overflow: hidden;
-	
+
 	iframe,
 	object,
 	embed {
@@ -51,7 +51,7 @@ body {
 	/***********/
 	/* sidebar */
 	/***********/
-	
+
 	.sidebar-wrapper {
 		.sidebar {
 			padding: 20px 0;
@@ -208,7 +208,8 @@ body {
 						.logo-wrapper {
 							text-align: left;
 
-							.shape-bh-logo {
+							.shape-anu-logo {
+								fill: $blue-color;
 								max-width: 100%;
 								height: 53px;
 								margin: 11px 0;
@@ -748,11 +749,11 @@ body {
 			}
 		}
 	}
-	
+
 	/*************/
 	/* not found */
 	/*************/
-	
+
 	.not-found {
 		p {
 			margin-bottom: 0;
